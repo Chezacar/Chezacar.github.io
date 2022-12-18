@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="所见即所得：利用可见性进行 3D 对象检测 论文信息  Paper: [CVPR 2020] What You See is What You Get: Exploiting Visibility for 3D Object Detection[1]Link: https:&#x2F;&#x2F;openaccess.thecvf.com&#x2F;content_CVPR_2020&#x2F;papers&#x2F;Hu_What_You_Se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="所见即所得：利用可见性进行 3D 对象检测">
+<meta property="og:url" content="http://example.com/2021/09/05/20211204Visibility/index.html">
+<meta property="og:site_name" content="Elwood Lei">
+<meta property="og:description" content="所见即所得：利用可见性进行 3D 对象检测 论文信息  Paper: [CVPR 2020] What You See is What You Get: Exploiting Visibility for 3D Object Detection[1]Link: https:&#x2F;&#x2F;openaccess.thecvf.com&#x2F;content_CVPR_2020&#x2F;papers&#x2F;Hu_What_You_Se">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://notes.sjtu.edu.cn/uploads/upload_74019e87e72f45c06bc22cf0dfa62972.png">
+<meta property="og:image" content="https://notes.sjtu.edu.cn/uploads/upload_f7703a0de5e45f7f5461dea7f928cbe1.png">
+<meta property="og:image" content="https://notes.sjtu.edu.cn/uploads/upload_fe20a748f2709433ed880b3f92c6305f.png">
+<meta property="og:image" content="https://notes.sjtu.edu.cn/uploads/upload_2d31d1321969a9d537b02333300dca2b.png">
+<meta property="og:image" content="https://notes.sjtu.edu.cn/uploads/upload_4e88c393ac1975c4946a5704e951cd92.png">
+<meta property="og:image" content="https://notes.sjtu.edu.cn/uploads/upload_17c560b85a759ea3d0b21668e2ac34ec.png">
+<meta property="article:published_time" content="2021-09-05T12:07:01.000Z">
+<meta property="article:modified_time" content="2022-02-06T13:38:01.722Z">
+<meta property="article:author" content="Elwood Lei">
+<meta property="article:tag" content="Point Cloud">
+<meta property="article:tag" content="3D Object Detection">
+<meta property="article:tag" content="Neural Network">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://notes.sjtu.edu.cn/uploads/upload_74019e87e72f45c06bc22cf0dfa62972.png">
+
+<link rel="canonical" href="http://example.com/2021/09/05/20211204Visibility/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>所见即所得：利用可见性进行 3D 对象检测 | Elwood Lei</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Elwood Lei</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/05/20211204Visibility/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/IMG_4074.jpg">
+      <meta itemprop="name" content="Elwood Lei">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Elwood Lei">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          所见即所得：利用可见性进行 3D 对象检测
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-09-05 20:07:01" itemprop="dateCreated datePublished" datetime="2021-09-05T20:07:01+08:00">2021-09-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-02-06 21:38:01" itemprop="dateModified" datetime="2022-02-06T21:38:01+08:00">2022-02-06</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com" style="font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><h1 data-tool="mdnice编辑器" style="padding: 0px; font-weight: bold; color: black; font-size: 24px; margin-top: -0.46em; margin-bottom: 0.1em; border-bottom: 2px solid rgb(198, 196, 196); box-sizing: border-box;"><span class="prefix" style="display: none;"></span><span class="content" style="padding-top: 5px; padding-bottom: 5px; color: rgb(160, 160, 160); font-size: 13px; line-height: 2; box-sizing: border-box;">所见即所得：利用可见性进行 3D 对象检测</span><span class="suffix"></span></h1>
+<h2 data-tool="mdnice编辑器" style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px; margin: 10px auto; height: 40px; background-color: rgb(251, 251, 251); border-bottom: 1px solid rgb(246, 246, 246); overflow: hidden; box-sizing: border-box;"><span class="prefix" style="display: none;"></span><span class="content" style="margin-left: -10px; display: inline-block; width: auto; height: 40px; background-color: rgb(33, 33, 34); border-bottom-right-radius: 100px; color: rgb(255, 255, 255); padding-right: 30px; padding-left: 30px; line-height: 40px; font-size: 16px;">论文信息</span><span class="suffix"></span></h2>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500; font-size: 15px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif;">Paper: [CVPR 2020] What You See is What You Get: Exploiting Visibility for 3D Object Detection[1]</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500; font-size: 15px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif;">Link: https://openaccess.thecvf.com/content_CVPR_2020/papers/Hu_What_You_See_is_What_You_Get_Exploiting_Visibility_for_CVPR_2020_paper.pdf</section></li></ul>
+<h2 data-tool="mdnice编辑器" style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px; margin: 10px auto; height: 40px; background-color: rgb(251, 251, 251); border-bottom: 1px solid rgb(246, 246, 246); overflow: hidden; box-sizing: border-box;"><span class="prefix" style="display: none;"></span><span class="content" style="margin-left: -10px; display: inline-block; width: auto; height: 40px; background-color: rgb(33, 33, 34); border-bottom-right-radius: 100px; color: rgb(255, 255, 255); padding-right: 30px; padding-left: 30px; line-height: 40px; font-size: 16px;">背景梳理</span><span class="suffix"></span></h2>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;">处理 3D 传感器数据的良好表示是什么？ 虽然这是从立体的机器视觉诞生开始就存在的一项基本挑战，但最近在 3D 传感器（如 LiDAR）的深度神经网络处理的背景下对其进行了新的探索。 已经提出了各种表示，包括图形网格(Graphical Meshes)、点云(Point Clouds)、体素网格(Voxel Grids)和范围图像(Range Images)。</p>
+<h2 data-tool="mdnice编辑器" style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px; margin: 10px auto; height: 40px; background-color: rgb(251, 251, 251); border-bottom: 1px solid rgb(246, 246, 246); overflow: hidden; box-sizing: border-box;"><span class="prefix" style="display: none;"></span><span class="content" style="margin-left: -10px; display: inline-block; width: auto; height: 40px; background-color: rgb(33, 33, 34); border-bottom-right-radius: 100px; color: rgb(255, 255, 255); padding-right: 30px; padding-left: 30px; line-height: 40px; font-size: 16px;">贡献</span><span class="suffix"></span></h2>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;">作者认为这篇文章的贡献体现在以下三个方面：</p>
+<ul data-tool="mdnice编辑器" style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+<li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500; font-size: 15px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif;">作者首先（重新）引入光线投射算法，该算法可有效计算体素网格的动态可见性。作者证明这些可以合并到基于批处理的梯度学习中。</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500; font-size: 15px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif;">接下来，作者描述了一种简单的方法来增强基于体素的网络的可见性：添加一个体素化的可见性图作为额外的输入流，探索早期和晚期融合的替代方案；</section></li><li><section style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500; font-size: 15px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif;">最后，作者表明可见性可以与最先进网络常见的两个关键修改相结合：虚拟对象的合成数据增强，以及激光雷达在多个时间范围内扫描的时间聚合。 其展示了可见性提示可用于更好地放置虚拟对象。</section></li></ul>
+<h2 data-tool="mdnice编辑器" style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px; margin: 10px auto; height: 40px; background-color: rgb(251, 251, 251); border-bottom: 1px solid rgb(246, 246, 246); overflow: hidden; box-sizing: border-box;"><span class="prefix" style="display: none;"></span><span class="content" style="margin-left: -10px; display: inline-block; width: auto; height: 40px; background-color: rgb(33, 33, 34); border-bottom-right-radius: 100px; color: rgb(255, 255, 255); padding-right: 30px; padding-left: 30px; line-height: 40px; font-size: 16px;">可见性（Visibility）</span><span class="suffix"></span></h2>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;">作者指出3D传感数据实际上不完全是3D的。从多目相机、结构光传感器或 LiDAR 捕获等深度测量方法都无可否认的会受到遮挡的影响。 实际上，这种信息丢失是 3D 传感器读数通常可以用 2D 数据结构（例如，2D 距离图像）表示的根本原因之一。 从这个角度来看，这种 3D 传感数据可能被更好地描述为“2.5D”。而可见性则表示了该数据类型的遮挡特性。
+<img src="https://notes.sjtu.edu.cn/uploads/upload_74019e87e72f45c06bc22cf0dfa62972.png" alt style="display: block; margin: 0 auto; max-width: 100%;"></p>
+<h3 data-tool="mdnice编辑器" style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 20px; margin: 20px auto 5px; border-top: 1px solid rgb(221, 221, 221); box-sizing: border-box;"><span class="prefix" style="display: none;"></span><span class="content" style="margin-top: -1px; padding-top: 6px; padding-right: 5px; padding-left: 5px; font-size: 17px; border-top: 2px solid rgb(33, 33, 34); display: inline-block; line-height: 1.1;">可见性的计算</span><span class="suffix" style="display: none;"></span></h3>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;"><strong style="font-weight: bold; color: black;">idar的物理原理：</strong> 每个 LiDAR 点都是通过物理光线投射过程生成的。 为了生成一个点，传感器会在某个方向发射激光脉冲。 投射至障碍物后激光反射返回后，可以计算从方向和飞行时间得出的 3D 坐标。 然而，坐标绝不是这种主动传感提供的唯一信息。 至关重要的是，它还提供了沿脉冲射线的空白区域的估计值。</p>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;"><strong style="font-weight: bold; color: black;">模拟 LiDAR 光线投射：</strong> 通过利用空白区域和激光反射之间的因果关系 - 点云点位于激光束上空白区域结束的位置，我们可以重新创建 LiDAR 激光束通过绘制从传感器原点到 3D 点的线段来实现。我们想使用这个线段来定义跨离散体积的空白区域，例如一个 3D 体素网格。具体来说，作者计算与这条线段相交的所有体素。沿着射线遇到的那些被标记为空闲，除了包围 3D 点的最后一个体素被标记为被占用。这会导致可见性体积，其中所有体素都标记为已占用、空闲或未知（默认）。作者将以多通道 2D 特征图（例如，RGB 图像是具有 3 个通道特征图）的形式将可见性体积集成到通用检测框架（图 2）中，其中可见性沿垂直维度（z 轴）被视为不同的通道。</p>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;"><strong style="font-weight: bold; color: black;">高效的体素遍历：</strong> 可见性计算必须非常高效。许多检测网络利用 LiDAR 点云中的稀疏性：PointPillars [3] 仅处理非空柱（约 3%），而 SECOND [32] 使用空间稀疏的 3D ConvNets。受这些方法的启发，我们通过有效的Voxel遍历算法来利用稀疏性。对于任何给定的射线，我们只需要沿着射线遍历一组稀疏的Voxel。直观地说，在遍历过程中，算法会枚举当前Voxel的六个轴对齐面，以确定哪些面与出射光线相交。然后它简单地前进到具有共享面部的相邻Voxel。该算法从原点的Voxel开始，并在遇到 3D 点占据的Voxel时终止。该算法在网格维度上是线性的，因此非常有效。
+<img src="https://notes.sjtu.edu.cn/uploads/upload_f7703a0de5e45f7f5461dea7f928cbe1.png" alt style="display: block; margin: 0 auto; max-width: 100%;"></p>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;"><strong style="font-weight: bold; color: black;">在线占用映射：</strong> 作者如何将即时的可见性扩展到时序信息当中？假设知道每个时间戳的传感器原点，我们可以计算每次扫描的瞬时可见性，从而产生 4D 时空可见性。 如果直接将一个 4D 卷积集成到检测框架中，计算复杂度过高。 因此，作者寻找在线占用映射并应用贝叶斯过滤将 4D 时空可见性转换为 3D 占用后验概率。 在下图中，作者绘制了瞬时可见性和时间占用率之间的视觉比较。
+<img src="https://notes.sjtu.edu.cn/uploads/upload_fe20a748f2709433ed880b3f92c6305f.png" alt style="display: block; margin: 0 auto; max-width: 100%;"></p>
+<h2 data-tool="mdnice编辑器" style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px; margin: 10px auto; height: 40px; background-color: rgb(251, 251, 251); border-bottom: 1px solid rgb(246, 246, 246); overflow: hidden; box-sizing: border-box;"><span class="prefix" style="display: none;"></span><span class="content" style="margin-left: -10px; display: inline-block; width: auto; height: 40px; background-color: rgb(33, 33, 34); border-bottom-right-radius: 100px; color: rgb(255, 255, 255); padding-right: 30px; padding-left: 30px; line-height: 40px; font-size: 16px;">网络架构</span><span class="suffix"></span></h2>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;"><img src="https://notes.sjtu.edu.cn/uploads/upload_2d31d1321969a9d537b02333300dca2b.png" alt style="display: block; margin: 0 auto; max-width: 100%;">
+本文介绍了一种用于 3D 对象检测的新型双信息流网络。作者将可见性纳入最先进的 3D 检测器，即 PointPillars[3]，作为附加信息。双流方法利用点云和可见性表示，并将它们融合为多通道表示。作者探索了早期和晚期融合策略，如图 5 所示。这是图 2 所示整体架构的一部分。 作者通过向 PointPillars 添加一个额外的输入流来实现的双信息流方法。作者将 PointPillars 的分辨率进行离散化，以提高集成的便利性。因此，网络的可见性体积与柱状特征图具有相同的 2D 空间大小。一个简单的策略是将它们连接起来并将它们馈送到主干网络中。作者将这种策略称为早期融合(下图(a))。另一种策略是将可见性信息输入单独的骨干网络，将其称为后期融合(下图(b))。</p>
+<h2 data-tool="mdnice编辑器" style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px; margin: 10px auto; height: 40px; background-color: rgb(251, 251, 251); border-bottom: 1px solid rgb(246, 246, 246); overflow: hidden; box-sizing: border-box;"><span class="prefix" style="display: none;"></span><span class="content" style="margin-left: -10px; display: inline-block; width: auto; height: 40px; background-color: rgb(33, 33, 34); border-bottom-right-radius: 100px; color: rgb(255, 255, 255); padding-right: 30px; padding-left: 30px; line-height: 40px; font-size: 16px;">实验</span><span class="suffix"></span></h2>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;">作者展示了 NuScenes 3D 检测基准的定性和定量结果：
+本文在 NuScenes 测试集上可视化作者的双信息流方法的定性结果。 作者为每个类分配不同的颜色（顶部）。 使用实心长方体来表示真实对象，使用线框来表示预测。 在（a）中，作者的方法在下雨天成功检测到场景中的大多数车辆，包括汽车、卡车和拖车。 在（b）中，模型设法检测到周围的所有汽车以及右侧的两辆摩托车。 在（c）中，作者将人行道上有许多行人的场景可视化，模型能够检测到其中的大部分。 最后，作者在 (d) 中演示了一个失败案例，其中模型无法从稀有类别中检测到对象。 在这种情况下，模型未能检测到汽车右侧的两辆工程车辆，将一辆为卡车，另一辆为公共汽车。
+<img src="https://notes.sjtu.edu.cn/uploads/upload_4e88c393ac1975c4946a5704e951cd92.png" alt style="display: block; margin: 0 auto; max-width: 100%;">
+作者也简单通过一些消融实验分析了融合方式和数据增强方式对性能的影响。
+<img src="https://notes.sjtu.edu.cn/uploads/upload_17c560b85a759ea3d0b21668e2ac34ec.png" alt style="display: block; margin: 0 auto; max-width: 100%;"></p>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;">本文重新审视了为 3D 数据寻找良好表示的问题。 作者指出，目前的3D表示是为真正的 3D 数据（例如从网格模型中采样）而设计的。 事实上，激光雷达扫描等 3D 传感数据是 2.5D。 通过处理诸如归一化点 (x, y, z) 集合之类的数据，重要的可见性信息从根本上被破坏。 在本文中，作者增强了 3D 对象检测的可见性。 作者首先证明可以通过 3D 光线投射有效地重新创建可见性。 作者引入了一种简单的信息流方法，将可见性作为单独的信息流添加到现有的最先进的 3D 检测器中。 最后，在 NuScenes 检测基准上，作者证明了所提出的网络明显优于最先进的检测器。</p>
+<h2 data-tool="mdnice编辑器" style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px; margin: 10px auto; height: 40px; background-color: rgb(251, 251, 251); border-bottom: 1px solid rgb(246, 246, 246); overflow: hidden; box-sizing: border-box;"><span class="prefix" style="display: none;"></span><span class="content" style="margin-left: -10px; display: inline-block; width: auto; height: 40px; background-color: rgb(33, 33, 34); border-bottom-right-radius: 100px; color: rgb(255, 255, 255); padding-right: 30px; padding-left: 30px; line-height: 40px; font-size: 16px;">参考文献</span><span class="suffix"></span></h2>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;">[1]: Hu P, Ziglar J, Held D, et al. What you see is what you get: Exploiting visibility for 3d object detection[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020: 11001-11009.</p>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;">[2]: Charles R Qi, Hao Su, Kaichun Mo, and Leonidas J Guibas. Pointnet: Deep learning on point sets for 3d classification and segmentation. In CVPR, pages 652–660, 2017.</p>
+<p data-tool="mdnice编辑器" style="padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;">[3]: Alex H Lang, Sourabh Vora, Holger Caesar, Lubing Zhou, Jiong Yang, and Oscar Beijbom. Pointpillars: Fast encoders for object detection from point clouds. In CVPR, 2019.</p>
+</section>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Point-Cloud/" rel="tag"># Point Cloud</a>
+              <a href="/tags/3D-Object-Detection/" rel="tag"># 3D Object Detection</a>
+              <a href="/tags/Neural-Network/" rel="tag"># Neural Network</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/05/20210905graphwavelet/" rel="prev" title="Graph wavelet nerual network">
+      <i class="fa fa-chevron-left"></i> Graph wavelet nerual network
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/15/20211015towards/" rel="next" title="20211015towards">
+      20211015towards <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nice"><span class="nav-number">1.</span> <span class="nav-text">所见即所得：利用可见性进行 3D 对象检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nice"><span class="nav-number">1.1.</span> <span class="nav-text">论文信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nice"><span class="nav-number">1.2.</span> <span class="nav-text">背景梳理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nice"><span class="nav-number">1.3.</span> <span class="nav-text">贡献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nice"><span class="nav-number">1.4.</span> <span class="nav-text">可见性（Visibility）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nice"><span class="nav-number">1.4.1.</span> <span class="nav-text">可见性的计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nice"><span class="nav-number">1.5.</span> <span class="nav-text">网络架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nice"><span class="nav-number">1.6.</span> <span class="nav-text">实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nice"><span class="nav-number">1.7.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Elwood Lei"
+      src="/images/IMG_4074.jpg">
+  <p class="site-author-name" itemprop="name">Elwood Lei</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Chezacar" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Chezacar" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:chezacarss@sjtu.com" title="E-Mail → mailto:chezacarss@sjtu.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Elwood Lei</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
