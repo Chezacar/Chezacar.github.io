@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<!-- This site was created with Wowchemy. https://www.wowchemy.com -->
+<!-- Last Published: October 10, 2023 --><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.7.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+
+  
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.047268c6dd09ad74ba54a0ba71837064.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.042e26407c9e383d96a1f26d6787c686.css" />
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+  <meta name="author" content="Zixing Lei" />
+
+
+
+
+
+  
+
+<meta name="description" content="Tightly-coupled Lidar-Visual-Inertial Odometry via Smoothing and Mapping" />
+
+
+
+<link rel="alternate" hreflang="en-us" href="https://example.com/post/lvi-sam/" />
+<link rel="canonical" href="https://example.com/post/lvi-sam/" />
+
+
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+
+
+<link rel="icon" type="image/png" href="/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_32x32_fill_lanczos_center_3.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_180x180_fill_lanczos_center_3.png" />
+
+<meta name="theme-color" content="#1565c0" />
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<meta property="twitter:card" content="summary_large_image" />
+
+  <meta property="twitter:site" content="@wowchemy" />
+  <meta property="twitter:creator" content="@wowchemy" />
+<meta property="twitter:image" content="https://example.com/post/lvi-sam/featured.png" />
+<meta property="og:site_name" content="Zixing Lei" />
+<meta property="og:url" content="https://example.com/post/lvi-sam/" />
+<meta property="og:title" content="LVI-SAM | Zixing Lei" />
+<meta property="og:description" content="Tightly-coupled Lidar-Visual-Inertial Odometry via Smoothing and Mapping" /><meta property="og:image" content="https://example.com/post/lvi-sam/featured.png" /><meta property="og:locale" content="en-us" />
+
+  
+    <meta
+      property="article:published_time"
+      content="2021-06-12T15:08:08&#43;00:00"
+    />
+  
+  
+    <meta property="article:modified_time" content="2021-06-12T15:08:08&#43;00:00">
+  
+
+
+
+
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://example.com/post/lvi-sam/"
+  },
+  "headline": "LVI-SAM",
+  
+  "image": [
+    "https://example.com/post/lvi-sam/featured.png"
+  ],
+  
+  "datePublished": "2021-06-12T15:08:08Z",
+  "dateModified": "2021-06-12T15:08:08Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Zixing Lei"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Zixing Lei",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.com/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Tightly-coupled Lidar-Visual-Inertial Odometry via Smoothing and Mapping"
+}
+</script>
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <title>LVI-SAM | Zixing Lei</title>
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="6443a3db378d917ca1cde34ed870a3f0" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.ec9d49ca50e4b80bdb08f0417a28ed84.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header header--fixed">
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Zixing Lei</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Zixing Lei</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#talks"><span>Talks</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#recent"><span>Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/uploads/resume.pdf"><span>CV</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>LVI-SAM</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jun 12, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 448px;">
+  <div style="position: relative">
+    <img src="/post/lvi-sam/featured_hub266ef2e68dc1b2dc69a24976cf47762_304659_720x2500_fit_q75_h2_lanczos_3.webp" width="720" height="448" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h1 id="lvi-sam基于sam的紧耦合激光雷达-视觉-惯导里程计">LVI-SAM:基于SAM的紧耦合激光雷达-视觉-惯导里程计</h1>
+<h2 id="论文信息">论文信息</h2>
+<p><strong>论文标题：</strong> LVI-SAM: Tightly-coupled Lidar-Visual-Inertial Odometry via Smoothing and Mapping
+<strong>论文来源：</strong> ICRA 2021
+<strong>论文链接：</strong> <a href="https://arxiv.org/abs/2104.10831" target="_blank" rel="noopener">https://arxiv.org/abs/2104.10831</a>
+<strong>代码：</strong> <a href="https://github.com/TixiaoShan/LVI-SAM" target="_blank" rel="noopener">https://github.com/TixiaoShan/LVI-SAM</a></p>
+<h2 id="简介">简介</h2>
+<p>作者提出了一个基于SAM的激光雷达-视觉-惯性测距框架 LVI-SAM，它实现了高精度和鲁棒的实时状态估计和地图构建。 LVI-SAM 建立在因子图(factor graph)之上，由两个子系统组成：视觉惯性系统 (VIS) 和激光雷达惯性系统 (LIS)。这两个子系统以紧耦合的方式设计，其中 VIS 利用 LIS 的估计来进行初始化。通过使用激光雷达的扫描数据提取视觉特征的深度信息，提高了 VIS 的精度。反过来，LIS 利用 VIS 估计进行初始猜测以支持扫描点的匹配。闭环检测首先由 VIS 识别，然后由 LIS 进一步细化。 LVI-SAM 也可以在两个子系统之一出现问题时正常使用，从而提高其在无纹理和无特征环境中的稳健性。 LVI-SAM 对从多个平台在各种规模和环境中收集的数据集进行了广泛评估。</p>
+<h2 id="特点">特点</h2>
+<p>1、实现了一个紧耦合的激光-视觉-惯导系统，通过因子图同时完成了多传感器融合和全局优化（包含回环检测）两项任务。
+2、通过故障检测机制，绕过出现问题的子系统(LIS或VIS)，提高了整个系统的鲁棒性。</p>
+<h2 id="算法框架">算法框架</h2>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://notes.sjtu.edu.cn/uploads/upload_4ef6432c2459e6c1594e60d8b5efe625.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+如算法流程框图所示，LVI-SAM系统主要分为基于视觉+惯导和点云+惯导两个系统。其中，VIS系统作者使用经典的VINS-Mono作为baseline。</p>
+<h3 id="vis">VIS</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://notes.sjtu.edu.cn/uploads/upload_93ea99968713aa2931a9c157933e245a.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+该视觉系统的特征点通过角点来进行提取，跟踪算法使用Lucas-Tomasi算法。与VINS-Mono不同之处在于，该VIS系统初始化时，会将激光雷达帧与视觉数据配准后获得一个稀疏的深度图，该深度图可用于辅助获得视觉特征点的深度信息。之后再通过优化视觉和IMU的测量联合残差得到视觉里程计。</p>
+<h4 id="初始化">初始化</h4>
+<p>由于在初始化时解决高度非线性问题，基于优化的 VIO 通常会出现发散。初始化的质量在很大程度上取决于两个因素：初始传感器运动和 IMU 参数的准确程度。在实践中，作者发现当传感器以小速度或恒定速度行进时，VINS-Mono经常无法初始化。这是因为当加速度激励不够大时观察变得十分困难。IMU 数据中噪声和偏差的比重过高，它们会影响原始加速度和角速度测量。在初始化时对这些参数的正确猜测有助于优化更快地收敛。
+为了提高LVI-SAM中的 VIS 初始化的鲁棒性，作者利用了来自 LIS 的估计系统状态 $x$ 和 IMU 偏差$b$。因为深度可以从激光雷达直接观察到，作者首先初始化 LIS 并获得 $x$ 和 $b$。然后根据图像时间戳对它们进行插值并将它们关联到每个图像关键帧。这里作者假设了IMU偏差在两个图像关键帧之间是恒定的。最后，来自 LIS 的估计$x$和$b$被用作VIS初始化的初始猜测，这显着提高了初始化速度和鲁棒性。可以在<a href="https://youtu.be/8CTl07D6Ibc" target="_blank" rel="noopener">补充视频</a>中找到使用和不使用LIS帮助的VIS初始化的比较。</p>
+<h4 id="特征深度关系">特征深度关系</h4>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://notes.sjtu.edu.cn/uploads/upload_365b60d63d25865da338c8f27cad0643.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+VIS完成初始化后，目标是使用VIS视觉里程计配准激光雷达的扫描结果。我们都知道激光雷达扫描的点云结果是稀疏的。为解决这个问题，作者将若干激光雷达帧聚合在一起，试图获得一个稠密的深度图像。作者将特征点与激光雷达获得的点云转换至同一个以相机为球心的单位球上。在该球内使用K-D tree来寻找球坐标系下距离图像特征点最近的三个激光雷达深度点，并将特征点的深度表示为特征点与球心的连线与之前找到的三个激光雷达深度点形成的平面的交点的深度。</p>
+<h4 id="失败检测">失败检测</h4>
+<p>由于剧烈运动、光照变化和无纹理环境，VIS 会出现失败情况。 当机器人进行剧烈运动或进入无纹理环境时，跟踪特征的数量会大大减少。 不足的特征可能会导致优化问题无法收敛。当 VIS 出现故障时，估计会产生很大的IMU偏差。因此，当跟踪特征的数量低于阈值或估计的 IMU 偏差超过阈值时，LVI-SAM报告VIS失败。 该系统需要主动故障检测，以便其故障不会破坏LIS的功能。 一旦检测到故障，VIS会重新初始化并通知LIS。</p>
+<h4 id="回环检测">回环检测</h4>
+<p>LVI-SAM使用DBoW2算法进行闭环检测。对每个新的关键帧，提取BRIEF描述子，并与之前的进行比较。通过DBoW2获得的候选者，将会发给LIS进行进一步验证。</p>
+<h3 id="lis">LIS</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://notes.sjtu.edu.cn/uploads/upload_bdc1290ed4c5cb588d1c55a86964a328.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+激光模块作者基于自己此前的工作LIO-SAM，使用因子图进行全局位姿优化。通过IMU预积分、视觉里程计、激光雷达里程计、闭环检测四种约束来优化结果。作者对激光雷达使用了一个关键帧滑动窗来保证计算复杂度。当机器人产生较大位移时，即丢弃关键帧之间的帧。选择了新关键帧后，如图所示，则在因子图中增加一个新的机器人状态$x$节点。</p>
+<h4 id="初始估计">初始估计</h4>
+<p>在 LIS 初始化之前，作者假设机器人从零速度的静态位置开始。然后整合原始IMU测量，假设偏置和噪声为零值。两个激光雷达关键帧之间的综合平移和旋转变化产生了扫描匹配的初始猜测。作者发现当初始线速度小于 $10 m/s$ 且角速度小于 $180^{\circ}/s$ 时，这种方法可以成功初始化系统。 LIS 初始化后，我们在因子图中估计 IMU 偏差、机器人位姿和速度。然后我们将它们发送到 VIS 以帮助其初始化。
+LIS 初始化后，便可以从两个来源获得初始猜测：具有校正偏差的集成 IMU 测量值和 VIS。当可用时，作者使用视觉惯性里程计作为初始猜测。如果 VIS 报告失败，系统将切换到 IMU 测量以进行初始猜测。这些程序在纹理丰富和纹理少的环境中提高了初始猜测的准确性和鲁棒性。</p>
+<h4 id="失败检测-1">失败检测</h4>
+<p>尽管激光雷达可以在远距离捕获环境的精细细节，但它仍然会遇到扫描匹配受到不良约束的场景。作者们采用 <em>“On Degeneracy of Optimization-based State Estimation Problems”</em> 中的方法进行 LIS失败检测。</p>
+<h2 id="实验">实验</h2>
+<p>作者使用自己采集的数据集进行了消融实验，其中A1：不包含LIS；A2：不包含VIS；A3：LIS与VIS都用，测试VIS中深度优化的作用；A4：包含闭环检测
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://notes.sjtu.edu.cn/uploads/upload_8888e04fe7c632609bd4607fa137d06f.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+作者在Jackal dataset和Handheld dataset中对比了LVI-SAM和目前的一些SOTA方法，LVI-SAM在两个数据集上都完成得很好。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://notes.sjtu.edu.cn/uploads/upload_7f9969790df1b82cd2536c338ee4488f.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="https://notes.sjtu.edu.cn/uploads/upload_42d02822055f7c8ab0697b4d0b7e0b95.png" alt="" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="参考文献">参考文献</h2>
+<p>[1]: Shan T, Englot B, Ratti C, Rus D. LVI-SAM: Tightly-coupled Lidar-Visual-Inertial Odometry via Smoothing and Mapping. arXiv preprint arXiv:2104.10831. 2021 Apr 22.</p>
+<p>[2]: Qin, Tong, Peiliang Li, and Shaojie Shen. &ldquo;Vins-mono: A robust and versatile monocular visual-inertial state estimator.&rdquo; IEEE Transactions on Robotics 34, no. 4 (2018): 1004-1020.</p>
+<p>[3]: Shan T, Englot B, Meyers D, Wang W, Ratti C, Rus D. Lio-sam: Tightly-coupled lidar inertial odometry via smoothing and mapping. arXiv preprint arXiv:2007.00258. 2020 Jul 1.</p>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/slam/">SLAM</a>
+  
+  <a class="badge badge-light" href="/tag/rgb/">RGB</a>
+  
+  <a class="badge badge-light" href="/tag/pointcloud/">PointCloud</a>
+  
+  <a class="badge badge-light" href="/tag/imu/">IMU</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fpost%2Flvi-sam%2F&amp;text=LVI-SAM" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fexample.com%2Fpost%2Flvi-sam%2F&amp;t=LVI-SAM" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a href="mailto:?subject=LVI-SAM&amp;body=https%3A%2F%2Fexample.com%2Fpost%2Flvi-sam%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fexample.com%2Fpost%2Flvi-sam%2F&amp;title=LVI-SAM" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=LVI-SAM%20https%3A%2F%2Fexample.com%2Fpost%2Flvi-sam%2F" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fexample.com%2Fpost%2Flvi-sam%2F&amp;title=LVI-SAM" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://example.com/"><img class="avatar mr-3 avatar-circle" src="/authors/zixing/avatar_hu43281ae710107253e97cc0d147591bf8_1611587_270x270_fill_q75_lanczos_center.jpg" alt="Zixing Lei"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://example.com/">Zixing Lei</a></h5>
+      <h6 class="card-subtitle">Master Student</h6>
+      <p class="card-text">My research interests include computer vision, embodied AI and multi-modality 3D understanding.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=4r3VI9EAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Chezacar" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/zixing-lei-25409819b/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/uploads/resume.pdf" >
+        <i class="ai ai-cv"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+
+
+<script src="/js/vendor-bundle.min.f64289d8217e08e3afcd597d60836062.js"></script>
+
+
+
+
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+
+  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<script src="/en/js/wowchemy.min.3322c0d94f0e691b0b24c63f4c41064b.js"></script>
+
+
+
+
+
+
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <pre><code></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/wowchemy-publication.9137013a66774049159934c29c3f0205.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

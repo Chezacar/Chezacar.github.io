@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PointCloud | Zixing Lei</title>
+    <link>https://example.com/tag/pointcloud/</link>
+      <atom:link href="https://example.com/tag/pointcloud/index.xml" rel="self" type="application/rss+xml" />
+    <description>PointCloud</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 12 Jun 2021 15:08:08 +0000</lastBuildDate>
+    <image>
+      <url>https://example.com/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_512x512_fill_lanczos_center_3.png</url>
+      <title>PointCloud</title>
+      <link>https://example.com/tag/pointcloud/</link>
+    </image>
+    
+    <item>
+      <title>LVI-SAM</title>
+      <link>https://example.com/post/lvi-sam/</link>
+      <pubDate>Sat, 12 Jun 2021 15:08:08 +0000</pubDate>
+      <guid>https://example.com/post/lvi-sam/</guid>
+      <description>&lt;h1 id=&#34;lvi-sam基于sam的紧耦合激光雷达-视觉-惯导里程计&#34;&gt;LVI-SAM:基于SAM的紧耦合激光雷达-视觉-惯导里程计&lt;/h1&gt;
+&lt;h2 id=&#34;论文信息&#34;&gt;论文信息&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;论文标题：&lt;/strong&gt; LVI-SAM: Tightly-coupled Lidar-Visual-Inertial Odometry via Smoothing and Mapping
+&lt;strong&gt;论文来源：&lt;/strong&gt; ICRA 2021
+&lt;strong&gt;论文链接：&lt;/strong&gt; &lt;a href=&#34;https://arxiv.org/abs/2104.10831&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://arxiv.org/abs/2104.10831&lt;/a&gt;
+&lt;strong&gt;代码：&lt;/strong&gt; &lt;a href=&#34;https://github.com/TixiaoShan/LVI-SAM&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://github.com/TixiaoShan/LVI-SAM&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;p&gt;作者提出了一个基于SAM的激光雷达-视觉-惯性测距框架 LVI-SAM，它实现了高精度和鲁棒的实时状态估计和地图构建。 LVI-SAM 建立在因子图(factor graph)之上，由两个子系统组成：视觉惯性系统 (VIS) 和激光雷达惯性系统 (LIS)。这两个子系统以紧耦合的方式设计，其中 VIS 利用 LIS 的估计来进行初始化。通过使用激光雷达的扫描数据提取视觉特征的深度信息，提高了 VIS 的精度。反过来，LIS 利用 VIS 估计进行初始猜测以支持扫描点的匹配。闭环检测首先由 VIS 识别，然后由 LIS 进一步细化。 LVI-SAM 也可以在两个子系统之一出现问题时正常使用，从而提高其在无纹理和无特征环境中的稳健性。 LVI-SAM 对从多个平台在各种规模和环境中收集的数据集进行了广泛评估。&lt;/p&gt;
+&lt;h2 id=&#34;特点&#34;&gt;特点&lt;/h2&gt;
+&lt;p&gt;1、实现了一个紧耦合的激光-视觉-惯导系统，通过因子图同时完成了多传感器融合和全局优化（包含回环检测）两项任务。
+2、通过故障检测机制，绕过出现问题的子系统(LIS或VIS)，提高了整个系统的鲁棒性。&lt;/p&gt;
+&lt;h2 id=&#34;算法框架&#34;&gt;算法框架&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_4ef6432c2459e6c1594e60d8b5efe625.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+如算法流程框图所示，LVI-SAM系统主要分为基于视觉+惯导和点云+惯导两个系统。其中，VIS系统作者使用经典的VINS-Mono作为baseline。&lt;/p&gt;
+&lt;h3 id=&#34;vis&#34;&gt;VIS&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_93ea99968713aa2931a9c157933e245a.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+该视觉系统的特征点通过角点来进行提取，跟踪算法使用Lucas-Tomasi算法。与VINS-Mono不同之处在于，该VIS系统初始化时，会将激光雷达帧与视觉数据配准后获得一个稀疏的深度图，该深度图可用于辅助获得视觉特征点的深度信息。之后再通过优化视觉和IMU的测量联合残差得到视觉里程计。&lt;/p&gt;
+&lt;h4 id=&#34;初始化&#34;&gt;初始化&lt;/h4&gt;
+&lt;p&gt;由于在初始化时解决高度非线性问题，基于优化的 VIO 通常会出现发散。初始化的质量在很大程度上取决于两个因素：初始传感器运动和 IMU 参数的准确程度。在实践中，作者发现当传感器以小速度或恒定速度行进时，VINS-Mono经常无法初始化。这是因为当加速度激励不够大时观察变得十分困难。IMU 数据中噪声和偏差的比重过高，它们会影响原始加速度和角速度测量。在初始化时对这些参数的正确猜测有助于优化更快地收敛。
+为了提高LVI-SAM中的 VIS 初始化的鲁棒性，作者利用了来自 LIS 的估计系统状态 $x$ 和 IMU 偏差$b$。因为深度可以从激光雷达直接观察到，作者首先初始化 LIS 并获得 $x$ 和 $b$。然后根据图像时间戳对它们进行插值并将它们关联到每个图像关键帧。这里作者假设了IMU偏差在两个图像关键帧之间是恒定的。最后，来自 LIS 的估计$x$和$b$被用作VIS初始化的初始猜测，这显着提高了初始化速度和鲁棒性。可以在&lt;a href=&#34;https://youtu.be/8CTl07D6Ibc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;补充视频&lt;/a&gt;中找到使用和不使用LIS帮助的VIS初始化的比较。&lt;/p&gt;
+&lt;h4 id=&#34;特征深度关系&#34;&gt;特征深度关系&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_365b60d63d25865da338c8f27cad0643.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+VIS完成初始化后，目标是使用VIS视觉里程计配准激光雷达的扫描结果。我们都知道激光雷达扫描的点云结果是稀疏的。为解决这个问题，作者将若干激光雷达帧聚合在一起，试图获得一个稠密的深度图像。作者将特征点与激光雷达获得的点云转换至同一个以相机为球心的单位球上。在该球内使用K-D tree来寻找球坐标系下距离图像特征点最近的三个激光雷达深度点，并将特征点的深度表示为特征点与球心的连线与之前找到的三个激光雷达深度点形成的平面的交点的深度。&lt;/p&gt;
+&lt;h4 id=&#34;失败检测&#34;&gt;失败检测&lt;/h4&gt;
+&lt;p&gt;由于剧烈运动、光照变化和无纹理环境，VIS 会出现失败情况。 当机器人进行剧烈运动或进入无纹理环境时，跟踪特征的数量会大大减少。 不足的特征可能会导致优化问题无法收敛。当 VIS 出现故障时，估计会产生很大的IMU偏差。因此，当跟踪特征的数量低于阈值或估计的 IMU 偏差超过阈值时，LVI-SAM报告VIS失败。 该系统需要主动故障检测，以便其故障不会破坏LIS的功能。 一旦检测到故障，VIS会重新初始化并通知LIS。&lt;/p&gt;
+&lt;h4 id=&#34;回环检测&#34;&gt;回环检测&lt;/h4&gt;
+&lt;p&gt;LVI-SAM使用DBoW2算法进行闭环检测。对每个新的关键帧，提取BRIEF描述子，并与之前的进行比较。通过DBoW2获得的候选者，将会发给LIS进行进一步验证。&lt;/p&gt;
+&lt;h3 id=&#34;lis&#34;&gt;LIS&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_bdc1290ed4c5cb588d1c55a86964a328.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+激光模块作者基于自己此前的工作LIO-SAM，使用因子图进行全局位姿优化。通过IMU预积分、视觉里程计、激光雷达里程计、闭环检测四种约束来优化结果。作者对激光雷达使用了一个关键帧滑动窗来保证计算复杂度。当机器人产生较大位移时，即丢弃关键帧之间的帧。选择了新关键帧后，如图所示，则在因子图中增加一个新的机器人状态$x$节点。&lt;/p&gt;
+&lt;h4 id=&#34;初始估计&#34;&gt;初始估计&lt;/h4&gt;
+&lt;p&gt;在 LIS 初始化之前，作者假设机器人从零速度的静态位置开始。然后整合原始IMU测量，假设偏置和噪声为零值。两个激光雷达关键帧之间的综合平移和旋转变化产生了扫描匹配的初始猜测。作者发现当初始线速度小于 $10 m/s$ 且角速度小于 $180^{\circ}/s$ 时，这种方法可以成功初始化系统。 LIS 初始化后，我们在因子图中估计 IMU 偏差、机器人位姿和速度。然后我们将它们发送到 VIS 以帮助其初始化。
+LIS 初始化后，便可以从两个来源获得初始猜测：具有校正偏差的集成 IMU 测量值和 VIS。当可用时，作者使用视觉惯性里程计作为初始猜测。如果 VIS 报告失败，系统将切换到 IMU 测量以进行初始猜测。这些程序在纹理丰富和纹理少的环境中提高了初始猜测的准确性和鲁棒性。&lt;/p&gt;
+&lt;h4 id=&#34;失败检测-1&#34;&gt;失败检测&lt;/h4&gt;
+&lt;p&gt;尽管激光雷达可以在远距离捕获环境的精细细节，但它仍然会遇到扫描匹配受到不良约束的场景。作者们采用 &lt;em&gt;“On Degeneracy of Optimization-based State Estimation Problems”&lt;/em&gt; 中的方法进行 LIS失败检测。&lt;/p&gt;
+&lt;h2 id=&#34;实验&#34;&gt;实验&lt;/h2&gt;
+&lt;p&gt;作者使用自己采集的数据集进行了消融实验，其中A1：不包含LIS；A2：不包含VIS；A3：LIS与VIS都用，测试VIS中深度优化的作用；A4：包含闭环检测
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_8888e04fe7c632609bd4607fa137d06f.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+作者在Jackal dataset和Handheld dataset中对比了LVI-SAM和目前的一些SOTA方法，LVI-SAM在两个数据集上都完成得很好。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_7f9969790df1b82cd2536c338ee4488f.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_42d02822055f7c8ab0697b4d0b7e0b95.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献&lt;/h2&gt;
+&lt;p&gt;[1]: Shan T, Englot B, Ratti C, Rus D. LVI-SAM: Tightly-coupled Lidar-Visual-Inertial Odometry via Smoothing and Mapping. arXiv preprint arXiv:2104.10831. 2021 Apr 22.&lt;/p&gt;
+&lt;p&gt;[2]: Qin, Tong, Peiliang Li, and Shaojie Shen. &amp;ldquo;Vins-mono: A robust and versatile monocular visual-inertial state estimator.&amp;rdquo; IEEE Transactions on Robotics 34, no. 4 (2018): 1004-1020.&lt;/p&gt;
+&lt;p&gt;[3]: Shan T, Englot B, Meyers D, Wang W, Ratti C, Rus D. Lio-sam: Tightly-coupled lidar inertial odometry via smoothing and mapping. arXiv preprint arXiv:2007.00258. 2020 Jul 1.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SPVNAS</title>
+      <link>https://example.com/post/spvnas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.com/post/spvnas/</guid>
+      <description>&lt;h1 id=&#34;spvnas-基于点云-网格的稀疏卷积的3d神经网络结构搜索&#34;&gt;SPVNAS: 基于点云-网格的稀疏卷积的3D神经网络结构搜索&lt;/h1&gt;
+&lt;!-- ###### tags: &#39;点云语义分割&#39; --&gt;
+&lt;h2 id=&#34;论文信息&#34;&gt;论文信息&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Paper: [ECCV-2020] Searching Ecient 3D Architectures with Sparse Point-Voxel Convolution [1]&lt;/li&gt;
+&lt;li&gt;Link: &lt;a href=&#34;https://arxiv.org/pdf/2007.16100.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://arxiv.org/pdf/2007.16100.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;背景梳理&#34;&gt;背景梳理&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;为保证行驶安全性，自动驾驶汽车需要准确高效的理解3D场景。在一般场景下，激光雷达通常会扫描到数万个点，非欧地分布在整个空间中。我们可以将该过程类比于模拟图像转换为数字图像在更高的3D空间进行操作，如果按照图像离散化类似的分辨率进行网格化（例如长宽高为10^2数量级），数据量将大大增加。由于计算资源的限制，现存的3D视觉模型通常需要对点云数据进行低分辨率的网格化以及破坏性较大的下采样。对于较大物体来说，即使进行低分辨率网格化或激进的下采样，我们仍能够保留足够的信息对物体的类别进行判断，但对较小物体来说，低分辨率网格化将非常容易使其与周边物体混淆，导致模型输出错误的结果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;为解决这一问题，2019年末，MIT Han Lab发表论文&lt;strong&gt;Point-Voxel CNN for Efficient 3D Deep Learning&lt;/strong&gt;[2]，并提出新型点云处理框架 (Point-Voxel CNN，下称PVCNN)，将点云处理领域的两类思路：&lt;strong&gt;基于栅格&lt;/strong&gt;和&lt;strong&gt;直接处理点云&lt;/strong&gt;的方法进行了结合。PVCNN可以快速、高效地进行3D点云数据，与此同时还能避免稀疏性带来的巨大的不规则数据访存开销，提高硬件效率。PVCNN这篇文章也成为了2019年NIPS的Spotlight文章。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;虽然PVCNN在小物体和较小的区域理解中展现了强劲的性能，其在大规模室外场景上仍然无法高效部署。本文在作者之前工作的基础上，提出&lt;strong&gt;稀疏点云-栅格卷积&lt;/strong&gt;（Sparse Point-Voxel Convolution ，下称SPVConv）方法。在增加的计算开销可忽略不计的前提下，使模型即使在户外大型场景中也能保留足够的细节信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;主要贡献&#34;&gt;主要贡献&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;作者设计了一个轻量级的3D模块SPVConv，它可以提高在小型物体上的性能，而在有限的硬件资源下，小型物体的分割是一个很有挑战性的问题。&lt;/li&gt;
+&lt;li&gt;作者设计了第一个3D场景理解中的AutoML框架：3D-NAS，可以给出在一定约束条件下的最佳3D模型。&lt;/li&gt;
+&lt;li&gt;截止在这篇文章截稿时，该方法在Semantic KITTI数据集的点云语义分割竞赛排行榜上排名第一（目前仍排名前四）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;方法&#34;&gt;方法&lt;/h2&gt;
+&lt;h3 id=&#34;spv-conv&#34;&gt;SPV-Conv&lt;/h3&gt;
+&lt;p&gt;作者分析了&lt;strong&gt;Point-Voxel Convolution&lt;/strong&gt;[2]以及&lt;strong&gt;Sparse Convolution&lt;/strong&gt;[3]两种方法的瓶颈，并认为这两种方法都给模型带来了非常严重的信息损失。为克服这两个模型存在的缺点，作者提出了如下图所示的SPVCNN方法。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_7b64ce332a5dcadb5addab7ce7b7c408.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;SPVCNN由[2]中栅格表示 (Volumetric Representation) 下聚合邻域信息的思路，转而在稀疏张量 (Sparse Tensor) 表示下利用三维稀疏卷积 (3D Sparse Convolution) 来处理邻域信息。而在基于点的分支中，作者直接在每个点上应用MLP来提取各个点的特征。然后将两个分支的输出与加法进行融合，以组合所提供的完整信息。与普通稀疏卷积相比，MLP层只需花费很少的计算开销（就mac而言为4%），但在信息流中引入了重要的细节。基于点的分支通过学习，主要用在小物体分割检测中。图中标红的点是该分支中最大特征范数前5%的点，而这些点几乎均位于小物体上，意味着该分支为小物体保留了大量信息。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_e110d0c8e658d01aef7adc45ce88013e.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;3d-nas&#34;&gt;3D-NAS&lt;/h3&gt;
+&lt;p&gt;作者提出的3D-NAS将网络的设计流程分为两个阶段，以支持高效地设计3D场景理解网络。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_d891ee6c24f18052737cf7788a3b870d.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;在第一阶段中，作者的目的是训练一个包含其设计搜索空间（Design Space）中所有可能出现的子网络的一个超大网络模型。由于该超大规模网络数量可能过于巨大，因此尽可能降低计算复杂度。首先作者提出使用分布均匀采样（Distributed Uniform Sampling）和权值共享（Weight Sharing）方法来降低搜索空间规模。以上两个方法解决了网络搜索空间的可变通道数问题。除此之外，作者还需解决另一个更具挑战性的问题：可变网络深度支持。解决这一问题的方法是：深度渐进收缩（Progressive Depth Shrinkage）策略：作者将网络的训练过程进行分段，而对每一段网络的训练过程中，作者都允许一个范围来进行网络深度的选择。这种算法用可接受的复杂度支持了任意深度的子网络。
+接下来是第二阶段的任务中作者借鉴了经典的遗传算法的思路（Evolutionary Search）：在该过程中，作者将起始待选网络数量设计为n，每次迭代中作者选取表现最好的k个网络。下一次迭代的n个待选网络将由1/2的crossover和1/2的mutation组成。对于mutation操作，我们从topk待选网络中随机选择一个，将其结构按照一定的概率进行改变（网络深度，通道数量）。而对于crossover操作，我们从topk网络中随机选择两个进行组合得到新网络。&lt;/p&gt;
+&lt;h2 id=&#34;实验&#34;&gt;实验&lt;/h2&gt;
+&lt;p&gt;作者在Semantic KITTI数据集上对其方法进行了评估，与同样基于3D的方法比较，SPVNAS方法在准确率，参数量，运算速度上都要胜过截止到该文章发布时的SOTA方法。（下图红色数字表示计算时间，蓝色数字表示该方法特有的预处理计算时间）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_f094ad71dfd6030bfb812052c0fac4bb.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+与一些通过2D投影的方法相比，SPVNAS也具有较大优势。（其中红字表示网络运算时间，蓝字表示投影所需要的时间）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_7c09e1e5b548b178f4dbc4a2bbb56e0a.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+与当时SOTA的MinkowskiNet方法相比，作者的方法对于小物体的分割具有很大的优势。两种方法在行人，自行车，自行车手，摩托车以及摩托车手的gap要远大于其平均gap，证明了SPVConv方法对于小物体和细节物体的特殊处理起到了作用而并非只是3D-NAS对模型进行了充分fine-tuned使得结果得到提升。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_c6ac46c5e3195df18f65366581760a42.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+MinkowskiNet对小物体及其边界的识别不及SPVNAS：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://notes.sjtu.edu.cn/uploads/upload_ee9ced9aa925bdab9dfa20c2d863f25b.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;本文提出了一种新型的3D点云分割方法SPVNAS，包含稀疏点云-栅格卷积以及3D-NAS两个主要部分。SPVconv通过结合基于网格的方法和基于Raw点的方法，有效保留了较小物体的信息，很大程度提升了较小物体的识别准确程度。除此之外，通过提出高效的3D-NAS AutoML结构，利用遗传算法思想，对该3D模型进行了充分的训练，使其在准确度，参数量，运算时间上都对当时的SOTA方法实现了超越。并在当时占据了Semantic KITTI数据集排行榜的第一名。&lt;/p&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献&lt;/h2&gt;
+&lt;p&gt;[1]: Tang, H., Liu, Z., Zhao, S., Lin, Y., Lin, J., Wang, H., &amp;amp; Han, S. (2020, August). Searching efficient 3d architectures with sparse point-voxel convolution. In ECCV(2020)&lt;/p&gt;
+&lt;p&gt;[2]: Liu, Z., Tang, H., Lin, Y., Han, S.: Point-Voxel CNN for Ecient 3D Deep Learning. In: NeurIPS (2019)&lt;/p&gt;
+&lt;p&gt;[3]: Choy, C., Gwak, J., Savarese, S.: 4D Spatio-Temporal ConvNets: Minkowski Convolutional Neural Networks. In: CVPR (2019)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

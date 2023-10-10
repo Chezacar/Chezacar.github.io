@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recent Talks | Zixing Lei</title>
+    <link>https://example.com/event/</link>
+      <atom:link href="https://example.com/event/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent Talks</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 19 Sep 2023 10:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://example.com/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_512x512_fill_lanczos_center_3.png</url>
+      <title>Recent Talks</title>
+      <link>https://example.com/event/</link>
+    </image>
+    
+    <item>
+      <title>Invited talk at Renmin University of China</title>
+      <link>https://example.com/talk/invited-talk-at-renmin-university-of-china/</link>
+      <pubDate>Tue, 19 Sep 2023 10:00:00 +0000</pubDate>
+      <guid>https://example.com/talk/invited-talk-at-renmin-university-of-china/</guid>
+      <description>&lt;!-- 
+
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.
+  &lt;/div&gt;
+&lt;/div&gt;
+ --&gt;
+&lt;!-- 
+Slides can be added in a few ways:
+
+- **Create** slides using Wowchemy&#39;s [_Slides_](https://wowchemy.com/docs/managing-content/#create-slides) feature and link using `slides` parameter in the front matter of the talk file
+- **Upload** an existing slide deck to `static/` and link using `url_slides` parameter in the front matter of the talk file
+- **Embed** your slides (e.g. Google Slides) or presentation video on this page using [shortcodes](https://wowchemy.com/docs/writing-markdown-latex/).
+
+Further event details, including [page elements](https://wowchemy.com/docs/writing-markdown-latex/) such as image galleries, can be added to the body of this page. --&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
