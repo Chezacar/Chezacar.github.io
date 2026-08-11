@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent Talks | Zixing Lei</title>
-    <link>https://example.com/event/</link>
-      <atom:link href="https://example.com/event/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://chezacar.github.io/event/</link>
+      <atom:link href="https://chezacar.github.io/event/index.xml" rel="self" type="application/rss+xml" />
     <description>Recent Talks</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 19 Sep 2023 10:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_512x512_fill_lanczos_center_3.png</url>
+      <url>https://chezacar.github.io/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_512x512_fill_lanczos_center_3.png</url>
       <title>Recent Talks</title>
-      <link>https://example.com/event/</link>
+      <link>https://chezacar.github.io/event/</link>
     </image>
     
     <item>
       <title>Invited talk at Renmin University of China</title>
-      <link>https://example.com/talk/invited-talk-at-renmin-university-of-china/</link>
+      <link>https://chezacar.github.io/talk/invited-talk-at-renmin-university-of-china/</link>
       <pubDate>Tue, 19 Sep 2023 10:00:00 +0000</pubDate>
-      <guid>https://example.com/talk/invited-talk-at-renmin-university-of-china/</guid>
+      <guid>https://chezacar.github.io/talk/invited-talk-at-renmin-university-of-china/</guid>
       <description>&lt;!-- 
 
 

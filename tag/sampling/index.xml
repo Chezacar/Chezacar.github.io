@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sampling | Zixing Lei</title>
-    <link>https://example.com/tag/sampling/</link>
-      <atom:link href="https://example.com/tag/sampling/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://chezacar.github.io/tag/sampling/</link>
+      <atom:link href="https://chezacar.github.io/tag/sampling/index.xml" rel="self" type="application/rss+xml" />
     <description>Sampling</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 25 Jul 2021 21:36:30 +0000</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_512x512_fill_lanczos_center_3.png</url>
+      <url>https://chezacar.github.io/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_512x512_fill_lanczos_center_3.png</url>
       <title>Sampling</title>
-      <link>https://example.com/tag/sampling/</link>
+      <link>https://chezacar.github.io/tag/sampling/</link>
     </image>
     
     <item>
       <title>图信号的采样理论</title>
-      <link>https://example.com/post/graphsample/</link>
+      <link>https://chezacar.github.io/post/graphsample/</link>
       <pubDate>Sun, 25 Jul 2021 21:36:30 +0000</pubDate>
-      <guid>https://example.com/post/graphsample/</guid>
+      <guid>https://chezacar.github.io/post/graphsample/</guid>
       <description>&lt;section id=&#34;nice&#34; data-tool=&#34;mdnice编辑器&#34; data-website=&#34;https://www.mdnice.com&#34; style=&#34;font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, &#39;PingFang SC&#39;, Cambria, Cochin, Georgia, Times, &#39;Times New Roman&#39;, serif;&#34;&gt;&lt;h1 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 24px;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34;&gt;图信号的采样理论&lt;/span&gt;&lt;span class=&#34;suffix&#34;&gt;&lt;/span&gt;&lt;/h1&gt;
 &lt;h6 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 16px;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34;&gt;tags: &#39;图信号处理&#39; &#39;采样&#39;&lt;/span&gt;&lt;span class=&#34;suffix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;/h6&gt;
 &lt;h2 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34;&gt;论文信息&lt;/span&gt;&lt;span class=&#34;suffix&#34;&gt;&lt;/span&gt;&lt;/h2&gt;

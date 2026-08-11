@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zixing Lei</title>
-    <link>https://example.com/</link>
-      <atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://chezacar.github.io/</link>
+      <atom:link href="https://chezacar.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Zixing Lei</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 10 Oct 2023 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_512x512_fill_lanczos_center_3.png</url>
+      <url>https://chezacar.github.io/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_512x512_fill_lanczos_center_3.png</url>
       <title>Zixing Lei</title>
-      <link>https://example.com/</link>
+      <link>https://chezacar.github.io/</link>
     </image>
     
     <item>
       <title>[ICRA 2024] Robust Collaborative Perception without External Localization and Clock Devices</title>
-      <link>https://example.com/publication/conference-paper/freealign/</link>
+      <link>https://chezacar.github.io/publication/conference-paper/freealign/</link>
       <pubDate>Mon, 29 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://example.com/publication/conference-paper/freealign/</guid>
+      <guid>https://chezacar.github.io/publication/conference-paper/freealign/</guid>
       <description></description>
     </item>
     
     <item>
       <title>[NeurIPS2023] Emergent Communication in Interactive Sketch Question Answering</title>
-      <link>https://example.com/publication/conference-paper/ecisqa/</link>
+      <link>https://chezacar.github.io/publication/conference-paper/ecisqa/</link>
       <pubDate>Tue, 10 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://example.com/publication/conference-paper/ecisqa/</guid>
+      <guid>https://chezacar.github.io/publication/conference-paper/ecisqa/</guid>
       <description>&lt;!-- 
 
 
@@ -50,9 +50,9 @@ Add the publication&#39;s **full text** or **supplementary notes** here. You can
     
     <item>
       <title>Invited talk at Renmin University of China</title>
-      <link>https://example.com/talk/invited-talk-at-renmin-university-of-china/</link>
+      <link>https://chezacar.github.io/talk/invited-talk-at-renmin-university-of-china/</link>
       <pubDate>Tue, 19 Sep 2023 10:00:00 +0000</pubDate>
-      <guid>https://example.com/talk/invited-talk-at-renmin-university-of-china/</guid>
+      <guid>https://chezacar.github.io/talk/invited-talk-at-renmin-university-of-china/</guid>
       <description>&lt;!-- 
 
 
@@ -75,9 +75,9 @@ Further event details, including [page elements](https://wowchemy.com/docs/writi
     
     <item>
       <title>Interruption-Aware Cooperative Perception for V2X Communication-Aided Autonomous Driving</title>
-      <link>https://example.com/publication/preprint/incop/</link>
+      <link>https://chezacar.github.io/publication/preprint/incop/</link>
       <pubDate>Fri, 07 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>https://example.com/publication/preprint/incop/</guid>
+      <guid>https://chezacar.github.io/publication/preprint/incop/</guid>
       <description>&lt;!-- 
 
 &lt;div class=&#34;alert alert-note&#34;&gt;
@@ -93,9 +93,9 @@ Add the publication&#39;s **full text** or **supplementary notes** here. You can
     
     <item>
       <title>[NeurIPS2022] Where2comm: Communication-Efficient Collaborative Perception via Spatial Confidence Maps</title>
-      <link>https://example.com/publication/conference-paper/where2comm/</link>
+      <link>https://chezacar.github.io/publication/conference-paper/where2comm/</link>
       <pubDate>Fri, 30 Sep 2022 00:00:00 +0000</pubDate>
-      <guid>https://example.com/publication/conference-paper/where2comm/</guid>
+      <guid>https://chezacar.github.io/publication/conference-paper/where2comm/</guid>
       <description>&lt;!-- 
 
 
@@ -121,9 +121,9 @@ Add the publication&#39;s **full text** or **supplementary notes** here. You can
     
     <item>
       <title>Graph wavelet nerual network</title>
-      <link>https://example.com/post/wavelet/</link>
+      <link>https://chezacar.github.io/post/wavelet/</link>
       <pubDate>Sun, 05 Sep 2021 20:07:01 +0000</pubDate>
-      <guid>https://example.com/post/wavelet/</guid>
+      <guid>https://chezacar.github.io/post/wavelet/</guid>
       <description>&lt;section id=&#34;nice&#34; data-tool=&#34;mdnice编辑器&#34; data-website=&#34;https://www.mdnice.com&#34; style=&#34;font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, &#39;PingFang SC&#39;, Cambria, Cochin, Georgia, Times, &#39;Times New Roman&#39;, serif;&#34;&gt;&lt;h1 data-tool=&#34;mdnice编辑器&#34; style=&#34;padding: 0px; font-weight: bold; color: black; font-size: 24px; margin-top: -0.46em; margin-bottom: 0.1em; border-bottom: 2px solid rgb(198, 196, 196); box-sizing: border-box;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34; style=&#34;padding-top: 5px; padding-bottom: 5px; color: rgb(160, 160, 160); font-size: 13px; line-height: 2; box-sizing: border-box;&#34;&gt;图小波神经网络&lt;/span&gt;&lt;span class=&#34;suffix&#34;&gt;&lt;/span&gt;&lt;/h1&gt;
 &lt;h2 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px; margin: 10px auto; height: 40px; background-color: rgb(251, 251, 251); border-bottom: 1px solid rgb(246, 246, 246); overflow: hidden; box-sizing: border-box;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34; style=&#34;margin-left: -10px; display: inline-block; width: auto; height: 40px; background-color: rgb(33, 33, 34); border-bottom-right-radius: 100px; color: rgb(255, 255, 255); padding-right: 30px; padding-left: 30px; line-height: 40px; font-size: 16px;&#34;&gt;论文信息&lt;/span&gt;&lt;span class=&#34;suffix&#34;&gt;&lt;/span&gt;&lt;/h2&gt;
 &lt;ul data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;&#34;&gt;
@@ -190,9 +190,9 @@ Add the publication&#39;s **full text** or **supplementary notes** here. You can
     
     <item>
       <title>图信号的采样理论</title>
-      <link>https://example.com/post/graphsample/</link>
+      <link>https://chezacar.github.io/post/graphsample/</link>
       <pubDate>Sun, 25 Jul 2021 21:36:30 +0000</pubDate>
-      <guid>https://example.com/post/graphsample/</guid>
+      <guid>https://chezacar.github.io/post/graphsample/</guid>
       <description>&lt;section id=&#34;nice&#34; data-tool=&#34;mdnice编辑器&#34; data-website=&#34;https://www.mdnice.com&#34; style=&#34;font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, &#39;PingFang SC&#39;, Cambria, Cochin, Georgia, Times, &#39;Times New Roman&#39;, serif;&#34;&gt;&lt;h1 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 24px;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34;&gt;图信号的采样理论&lt;/span&gt;&lt;span class=&#34;suffix&#34;&gt;&lt;/span&gt;&lt;/h1&gt;
 &lt;h6 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 16px;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34;&gt;tags: &#39;图信号处理&#39; &#39;采样&#39;&lt;/span&gt;&lt;span class=&#34;suffix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;/h6&gt;
 &lt;h2 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34;&gt;论文信息&lt;/span&gt;&lt;span class=&#34;suffix&#34;&gt;&lt;/span&gt;&lt;/h2&gt;
@@ -352,9 +352,9 @@ Erdo ̋s-Re ́nyi 图是通过随机连接节点构建的，其中每条边都�
     
     <item>
       <title>LVI-SAM</title>
-      <link>https://example.com/post/lvi-sam/</link>
+      <link>https://chezacar.github.io/post/lvi-sam/</link>
       <pubDate>Sat, 12 Jun 2021 15:08:08 +0000</pubDate>
-      <guid>https://example.com/post/lvi-sam/</guid>
+      <guid>https://chezacar.github.io/post/lvi-sam/</guid>
       <description>&lt;h1 id=&#34;lvi-sam基于sam的紧耦合激光雷达-视觉-惯导里程计&#34;&gt;LVI-SAM:基于SAM的紧耦合激光雷达-视觉-惯导里程计&lt;/h1&gt;
 &lt;h2 id=&#34;论文信息&#34;&gt;论文信息&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;论文标题：&lt;/strong&gt; LVI-SAM: Tightly-coupled Lidar-Visual-Inertial Odometry via Smoothing and Mapping
@@ -545,9 +545,9 @@ LIS 初始化后，便可以从两个来源获得初始猜测：具有校正偏�
     
     <item>
       <title>Slides</title>
-      <link>https://example.com/slides/example/</link>
+      <link>https://chezacar.github.io/slides/example/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>https://example.com/slides/example/</guid>
+      <guid>https://chezacar.github.io/slides/example/</guid>
       <description>&lt;h1 id=&#34;create-slides-in-markdown-with-wowchemy&#34;&gt;Create slides in Markdown with Wowchemy&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://wowchemy.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wowchemy&lt;/a&gt; | &lt;a href=&#34;https://wowchemy.com/docs/content/slides/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -670,9 +670,9 @@ $$&lt;/p&gt;
     
     <item>
       <title>从网络层视角看车载通信</title>
-      <link>https://example.com/post/v2vnetwork/</link>
+      <link>https://chezacar.github.io/post/v2vnetwork/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/v2vnetwork/</guid>
+      <guid>https://chezacar.github.io/post/v2vnetwork/</guid>
       <description>&lt;section id=&#34;nice&#34; data-tool=&#34;mdnice编辑器&#34; data-website=&#34;https://www.mdnice.com&#34; style=&#34;font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, &#39;PingFang SC&#39;, Cambria, Cochin, Georgia, Times, &#39;Times New Roman&#39;, serif;&#34;&gt;&lt;h1 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 24px;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34;&gt;从网络层视角看车载通信&lt;/span&gt;&lt;span class=&#34;suffix&#34;&gt;&lt;/span&gt;&lt;/h1&gt;
 &lt;h6 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 16px;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34;&gt;tags: &#39;IOT&#39; &#39;自动驾驶&#39; &#39;通信&#39;&lt;/span&gt;&lt;span class=&#34;suffix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;/h6&gt;
 &lt;h2 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34;&gt;论文信息&lt;/span&gt;&lt;span class=&#34;suffix&#34;&gt;&lt;/span&gt;&lt;/h2&gt;
@@ -777,9 +777,9 @@ pp. 94–101, Jun. 2018.（https://arxiv.org/pdf/1712.07143.pdf）&lt;/p&gt;
     
     <item>
       <title>协同感知的策略设计</title>
-      <link>https://example.com/post/collaborativeperception/</link>
+      <link>https://chezacar.github.io/post/collaborativeperception/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/collaborativeperception/</guid>
+      <guid>https://chezacar.github.io/post/collaborativeperception/</guid>
       <description>&lt;section id=&#34;nice&#34; data-tool=&#34;mdnice编辑器&#34; data-website=&#34;https://www.mdnice.com&#34; style=&#34;font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, &#39;PingFang SC&#39;, Cambria, Cochin, Georgia, Times, &#39;Times New Roman&#39;, serif;&#34;&gt;&lt;h1 data-tool=&#34;mdnice编辑器&#34; style=&#34;padding: 0px; font-weight: bold; color: black; font-size: 24px; margin-top: -0.46em; margin-bottom: 0.1em; border-bottom: 2px solid rgb(198, 196, 196); box-sizing: border-box;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34; style=&#34;padding-top: 5px; padding-bottom: 5px; color: rgb(160, 160, 160); font-size: 13px; line-height: 2; box-sizing: border-box;&#34;&gt;协同感知的策略设计&lt;/span&gt;&lt;span class=&#34;suffix&#34;&gt;&lt;/span&gt;&lt;/h1&gt;
 &lt;h2 data-tool=&#34;mdnice编辑器&#34; style=&#34;margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 22px; margin: 10px auto; height: 40px; background-color: rgb(251, 251, 251); border-bottom: 1px solid rgb(246, 246, 246); overflow: hidden; box-sizing: border-box;&#34;&gt;&lt;span class=&#34;prefix&#34; style=&#34;display: none;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;content&#34; style=&#34;margin-left: -10px; display: inline-block; width: auto; height: 40px; background-color: rgb(33, 33, 34); border-bottom-right-radius: 100px; color: rgb(255, 255, 255); padding-right: 30px; padding-left: 30px; line-height: 40px; font-size: 16px;&#34;&gt;论文信息&lt;/span&gt;&lt;span class=&#34;suffix&#34;&gt;&lt;/span&gt;&lt;/h2&gt;
 &lt;p data-tool=&#34;mdnice编辑器&#34; style=&#34;padding-top: 8px; padding-bottom: 8px; margin: 0; color: black; box-sizing: border-box; margin-bottom: 16px; font-family: &#39;Helvetica Neue&#39;, Helvetica, &#39;Segoe UI&#39;, Arial, freesans, sans-serif; font-size: 15px; text-align: start; white-space: normal; text-size-adjust: auto; line-height: 1.75em;&#34;&gt;[ECCV 2020] &lt;strong style=&#34;font-weight: bold; color: black;&#34;&gt;V2VNet: Vehicle-to-Vehicle Communication for Joint Perception and Prediction&lt;/strong&gt; &lt;em style=&#34;font-style: italic; color: black;&#34;&gt;https://link.springer.com/chapter/10.1007/978-3-030-58536-5_36&lt;/em&gt;&lt;/p&gt;
@@ -937,9 +937,9 @@ V2VNet为该问题搭出了一个较为全面合理的基础框架，包含了�
     
     <item>
       <title>Example Project</title>
-      <link>https://example.com/project/example/</link>
+      <link>https://chezacar.github.io/project/example/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>https://example.com/project/example/</guid>
+      <guid>https://chezacar.github.io/project/example/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
 &lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
 &lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
@@ -950,25 +950,25 @@ V2VNet为该问题搭出了一个较为全面合理的基础框架，包含了�
     
     <item>
       <title>External Project</title>
-      <link>https://example.com/project/external-project/</link>
+      <link>https://chezacar.github.io/project/external-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>https://example.com/project/external-project/</guid>
+      <guid>https://chezacar.github.io/project/external-project/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>https://example.com/admin/config.yml</link>
+      <link>https://chezacar.github.io/admin/config.yml</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.com/admin/config.yml</guid>
+      <guid>https://chezacar.github.io/admin/config.yml</guid>
       <description></description>
     </item>
     
     <item>
       <title>[ECCV2022] Latency-Aware Collaborative Perception</title>
-      <link>https://example.com/publication/conference-paper/syncnet/</link>
+      <link>https://chezacar.github.io/publication/conference-paper/syncnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.com/publication/conference-paper/syncnet/</guid>
+      <guid>https://chezacar.github.io/publication/conference-paper/syncnet/</guid>
       <description>&lt;!-- 
 
 
@@ -994,9 +994,9 @@ Add the publication&#39;s **full text** or **supplementary notes** here. You can
     
     <item>
       <title>SPVNAS</title>
-      <link>https://example.com/post/spvnas/</link>
+      <link>https://chezacar.github.io/post/spvnas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/spvnas/</guid>
+      <guid>https://chezacar.github.io/post/spvnas/</guid>
       <description>&lt;h1 id=&#34;spvnas-基于点云-网格的稀疏卷积的3d神经网络结构搜索&#34;&gt;SPVNAS: 基于点云-网格的稀疏卷积的3D神经网络结构搜索&lt;/h1&gt;
 &lt;!-- ###### tags: &#39;点云语义分割&#39; --&gt;
 &lt;h2 id=&#34;论文信息&#34;&gt;论文信息&lt;/h2&gt;

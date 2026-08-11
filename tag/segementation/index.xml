@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Segementation | Zixing Lei</title>
-    <link>https://example.com/tag/segementation/</link>
-      <atom:link href="https://example.com/tag/segementation/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://chezacar.github.io/tag/segementation/</link>
+      <atom:link href="https://chezacar.github.io/tag/segementation/index.xml" rel="self" type="application/rss+xml" />
     <description>Segementation</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
     <image>
-      <url>https://example.com/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_512x512_fill_lanczos_center_3.png</url>
+      <url>https://chezacar.github.io/media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_512x512_fill_lanczos_center_3.png</url>
       <title>Segementation</title>
-      <link>https://example.com/tag/segementation/</link>
+      <link>https://chezacar.github.io/tag/segementation/</link>
     </image>
     
     <item>
       <title>SPVNAS</title>
-      <link>https://example.com/post/spvnas/</link>
+      <link>https://chezacar.github.io/post/spvnas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.com/post/spvnas/</guid>
+      <guid>https://chezacar.github.io/post/spvnas/</guid>
       <description>&lt;h1 id=&#34;spvnas-基于点云-网格的稀疏卷积的3d神经网络结构搜索&#34;&gt;SPVNAS: 基于点云-网格的稀疏卷积的3D神经网络结构搜索&lt;/h1&gt;
 &lt;!-- ###### tags: &#39;点云语义分割&#39; --&gt;
 &lt;h2 id=&#34;论文信息&#34;&gt;论文信息&lt;/h2&gt;
