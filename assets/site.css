@@ -121,6 +121,16 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   letter-spacing: -0.01em;
 }
 
+#zixing-agentic-research .agentic-identity-link {
+  color: #d1d1d6;
+  white-space: nowrap;
+}
+
+#zixing-agentic-research .agentic-identity-link:hover {
+  color: var(--agentic-white);
+  text-decoration: underline;
+}
+
 #zixing-agentic-research .agentic-hero h1 {
   max-width: 850px;
   margin: 0;
