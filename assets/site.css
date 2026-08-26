@@ -220,13 +220,11 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
 #zixing-agentic-research .agentic-portrait {
   position: relative;
   width: 100%;
-  max-width: 410px;
-  margin: 0 -24px 0 auto;
-  aspect-ratio: 23 / 30;
-  overflow: hidden;
+  max-width: 450px;
+  margin: 0 -30px -72px auto;
+  aspect-ratio: 1226 / 1600;
+  overflow: visible;
   background: transparent;
-  -webkit-mask-image: radial-gradient(ellipse 76% 68% at 53% 47%, #000 60%, rgba(0,0,0,0.92) 71%, rgba(0,0,0,0.34) 87%, transparent 100%);
-  mask-image: radial-gradient(ellipse 76% 68% at 53% 47%, #000 60%, rgba(0,0,0,0.92) 71%, rgba(0,0,0,0.34) 87%, transparent 100%);
   animation: agentic-portrait-drift 11s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -234,16 +232,24 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
 #zixing-agentic-research .agentic-portrait::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(16,34,51,0.03), rgba(7,17,29,0.16));
+  z-index: 2;
+  height: 24%;
+  right: -14%;
+  bottom: -5%;
+  left: -14%;
+  background: radial-gradient(ellipse at 50% 78%, rgba(223,239,249,0.34), rgba(161,194,215,0.14) 44%, transparent 72%);
+  filter: blur(13px);
   pointer-events: none;
 }
 
 #zixing-agentic-research .agentic-portrait img {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  filter: drop-shadow(0 26px 34px rgba(1, 8, 16, 0.42)) saturate(0.92) contrast(1.02);
 }
 
 @keyframes agentic-mountain-drift {
@@ -706,7 +712,7 @@ html.agentic-dialog-open { overflow: hidden; }
     padding: 62px 0 68px;
   }
   #zixing-agentic-research .agentic-hero h1 { font-size: clamp(46px, 7.5vw, 62px); }
-  #zixing-agentic-research .agentic-portrait { margin-right: -12px; }
+  #zixing-agentic-research .agentic-portrait { margin: 0 -16px -68px auto; }
   #zixing-agentic-research .agentic-pillar-grid { grid-template-columns: 1fr; }
   #zixing-agentic-research .agentic-pillar,
   #zixing-agentic-research .agentic-pillar + .agentic-pillar { padding: 27px 0; border-right: 0; border-bottom: 1px solid var(--agentic-line); }
@@ -731,7 +737,7 @@ html.agentic-dialog-open { overflow: hidden; }
       linear-gradient(90deg, rgba(3,11,20,0.78), rgba(3,11,20,0.12));
   }
   #zixing-agentic-research .agentic-mountain-backdrop { background-position: 61% center; }
-  #zixing-agentic-research .agentic-portrait { width: min(100%, 360px); margin: -12px auto -18px; }
+  #zixing-agentic-research .agentic-portrait { width: min(112%, 390px); margin: -18px auto -46px; }
   #zixing-agentic-research .agentic-pillars { padding: 68px 0 72px; }
   #zixing-agentic-research .agentic-pillar-heading { font-size: 39px; }
   #zixing-agentic-research .agentic-publications { padding: 68px 0 76px; }
