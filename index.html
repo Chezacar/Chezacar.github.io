@@ -62,31 +62,8 @@
 
   <main id="agentic-top">
     <section class="agentic-hero" aria-labelledby="agentic-hero-title">
-      <svg class="agentic-wave-field" viewBox="0 0 1200 610" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="agentic-wave-gradient" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#5956d6" stop-opacity="0.15"></stop>
-            <stop offset="0.42" stop-color="#8e8aff" stop-opacity="0.9"></stop>
-            <stop offset="0.78" stop-color="#5ac8fa" stop-opacity="0.45"></stop>
-            <stop offset="1" stop-color="#5956d6" stop-opacity="0.12"></stop>
-          </linearGradient>
-          <path id="agentic-wave" d="M-130 90 C 55 12, 210 172, 375 88 S 690 15, 815 118 S 1050 154, 1330 68"></path>
-        </defs>
-        <g fill="none" stroke="url(#agentic-wave-gradient)" stroke-width="1.2">
-          <use href="#agentic-wave" transform="translate(0,-76)"></use><use href="#agentic-wave" transform="translate(0,-50)"></use>
-          <use href="#agentic-wave" transform="translate(0,-24)"></use><use href="#agentic-wave" transform="translate(0,2)"></use>
-          <use href="#agentic-wave" transform="translate(0,28)"></use><use href="#agentic-wave" transform="translate(0,54)"></use>
-          <use href="#agentic-wave" transform="translate(0,80)"></use><use href="#agentic-wave" transform="translate(0,106)"></use>
-          <use href="#agentic-wave" transform="translate(0,132)"></use><use href="#agentic-wave" transform="translate(0,158)"></use>
-          <use href="#agentic-wave" transform="translate(0,184)"></use><use href="#agentic-wave" transform="translate(0,210)"></use>
-          <use href="#agentic-wave" transform="translate(0,236)"></use><use href="#agentic-wave" transform="translate(0,262)"></use>
-          <use href="#agentic-wave" transform="translate(0,288)"></use><use href="#agentic-wave" transform="translate(0,314)"></use>
-          <use href="#agentic-wave" transform="translate(0,340)"></use><use href="#agentic-wave" transform="translate(0,366)"></use>
-          <use href="#agentic-wave" transform="translate(0,392)"></use><use href="#agentic-wave" transform="translate(0,418)"></use>
-          <use href="#agentic-wave" transform="translate(0,444)"></use><use href="#agentic-wave" transform="translate(0,470)"></use>
-          <use href="#agentic-wave" transform="translate(0,496)"></use><use href="#agentic-wave" transform="translate(0,522)"></use>
-        </g>
-      </svg>
+      <div class="agentic-mountain-backdrop" aria-hidden="true"></div>
+      <div class="agentic-snow-drift" aria-hidden="true"></div>
       <div class="agentic-width agentic-hero-inner">
         <div class="agentic-hero-copy">
           <p class="agentic-identity">Zixing &ldquo;Elwood&rdquo; Lei &middot; PhD Student, Shanghai Jiao Tong University &middot; <a class="agentic-identity-link" href="https://scholar.google.com/citations?user=4r3VI9EAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">Google Scholar &#8599;</a></p>
@@ -325,9 +302,17 @@
         <span class="agentic-paper-year" data-agentic-dialog-year></span>
       </div>
       <h2 id="agentic-dialog-title" data-agentic-dialog-title></h2>
-      <div class="agentic-dialog-authors" data-agentic-dialog-authors></div>
-      <p class="agentic-dialog-abstract" data-agentic-dialog-abstract></p>
-      <a class="agentic-dialog-link" data-agentic-dialog-link target="_blank" rel="noopener">Read paper <span aria-hidden="true">&#8599;</span></a>
+      <section class="agentic-dialog-section" aria-labelledby="agentic-dialog-authors-label">
+        <h3 class="agentic-dialog-section-label" id="agentic-dialog-authors-label">Authors</h3>
+        <div class="agentic-dialog-authors" data-agentic-dialog-authors></div>
+      </section>
+      <section class="agentic-dialog-section" aria-labelledby="agentic-dialog-abstract-label">
+        <h3 class="agentic-dialog-section-label" id="agentic-dialog-abstract-label">Abstract</h3>
+        <p class="agentic-dialog-abstract" data-agentic-dialog-abstract></p>
+      </section>
+      <div class="agentic-dialog-links" aria-label="Paper links">
+        <a class="agentic-dialog-link" data-agentic-dialog-link target="_blank" rel="noopener"><span data-agentic-dialog-link-label>arXiv</span> <span aria-hidden="true">&#8599;</span></a>
+      </div>
     </div>
   </dialog>
 

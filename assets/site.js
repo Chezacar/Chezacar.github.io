@@ -19,6 +19,7 @@
   const dialogAuthors = root.querySelector('[data-agentic-dialog-authors]');
   const dialogAbstract = root.querySelector('[data-agentic-dialog-abstract]');
   const dialogLink = root.querySelector('[data-agentic-dialog-link]');
+  const dialogLinkLabel = root.querySelector('[data-agentic-dialog-link-label]');
   let lastDialogTrigger = null;
 
   const publicationLabel = (value) => `${value} publication${value === 1 ? '' : 's'}`;
@@ -64,6 +65,9 @@
         dialogAuthors.innerHTML = authors.innerHTML;
         dialogAbstract.textContent = abstract.textContent;
         dialogLink.href = link.href;
+        const isArxiv = new URL(link.href).hostname.endsWith('arxiv.org');
+        dialogLinkLabel.textContent = isArxiv ? 'arXiv' : 'Paper';
+        dialogLink.setAttribute('aria-label', `${isArxiv ? 'Open on arXiv' : 'Open paper'}: ${title}`);
         document.documentElement.classList.add('agentic-dialog-open');
         paperDialog.showModal();
       });

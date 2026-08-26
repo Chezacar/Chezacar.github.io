@@ -83,43 +83,54 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   position: relative;
   min-height: 680px;
   overflow: hidden;
-  background: var(--agentic-black);
+  background: #07111d;
   color: var(--agentic-white);
 }
 
-#zixing-agentic-research .agentic-wave-field {
+#zixing-agentic-research .agentic-mountain-backdrop {
   position: absolute;
-  inset: -5%;
-  width: 110%;
-  height: 110%;
-  opacity: 0.72;
-  transform-origin: 50% 50%;
-  animation: agentic-wave-drift 18s ease-in-out infinite alternate;
-  will-change: transform, opacity;
+  z-index: 0;
+  inset: -7%;
+  background: #07111d url("../media/snow-mountain-hero.webp") center 47% / cover no-repeat;
+  transform-origin: 62% 50%;
+  animation: agentic-mountain-drift 22s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 #zixing-agentic-research .agentic-hero::before {
   content: "";
   position: absolute;
-  width: 52vw;
-  height: 52vw;
-  min-width: 520px;
-  min-height: 520px;
-  right: -12vw;
-  top: -24vw;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(105, 101, 255, 0.2) 0%, rgba(90, 200, 250, 0.08) 36%, rgba(0, 0, 0, 0) 70%);
-  filter: blur(22px);
-  animation: agentic-glow-breathe 9s ease-in-out infinite alternate;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(3, 11, 20, 0.91) 0%, rgba(3, 11, 20, 0.7) 42%, rgba(3, 11, 20, 0.15) 76%, rgba(3, 11, 20, 0.08) 100%),
+    linear-gradient(0deg, rgba(3, 11, 20, 0.7) 0%, rgba(3, 11, 20, 0) 43%);
   pointer-events: none;
 }
 
 #zixing-agentic-research .agentic-hero::after {
   content: "";
   position: absolute;
+  z-index: 1;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0.58));
+  background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(158,202,230,0.05) 52%, rgba(255,255,255,0.12));
   pointer-events: none;
+}
+
+#zixing-agentic-research .agentic-snow-drift {
+  position: absolute;
+  z-index: 1;
+  inset: -30%;
+  opacity: 0.34;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(255,255,255,0.45) 0 0.7px, transparent 1.2px);
+  background-position: 0 0, 45px 65px;
+  background-size: 125px 125px, 83px 83px;
+  transform: rotate(-8deg);
+  animation: agentic-snowfall 20s linear infinite;
+  pointer-events: none;
+  will-change: background-position;
 }
 
 #zixing-agentic-research .agentic-hero-inner {
@@ -209,22 +220,22 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
 #zixing-agentic-research .agentic-portrait {
   position: relative;
   width: 100%;
-  max-width: 360px;
-  margin: 0 0 0 auto;
+  max-width: 410px;
+  margin: 0 -24px 0 auto;
   aspect-ratio: 23 / 30;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 32px;
-  background: #d8d8dc;
-  box-shadow: 0 36px 80px rgba(0, 0, 0, 0.42), 0 1px 0 rgba(255, 255, 255, 0.18) inset;
+  background: transparent;
+  -webkit-mask-image: radial-gradient(ellipse 76% 68% at 53% 47%, #000 60%, rgba(0,0,0,0.92) 71%, rgba(0,0,0,0.34) 87%, transparent 100%);
+  mask-image: radial-gradient(ellipse 76% 68% at 53% 47%, #000 60%, rgba(0,0,0,0.92) 71%, rgba(0,0,0,0.34) 87%, transparent 100%);
+  animation: agentic-portrait-drift 11s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 #zixing-agentic-research .agentic-portrait::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.13));
+  background: linear-gradient(180deg, rgba(16,34,51,0.03), rgba(7,17,29,0.16));
   pointer-events: none;
 }
 
@@ -235,15 +246,19 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   object-fit: cover;
 }
 
-@keyframes agentic-wave-drift {
-  0% { transform: translate3d(-2%, -1%, 0) scale(1.01); opacity: 0.58; }
-  50% { opacity: 0.78; }
-  100% { transform: translate3d(2.5%, 1.5%, 0) scale(1.055); opacity: 0.68; }
+@keyframes agentic-mountain-drift {
+  from { transform: translate3d(-1.4%, -0.5%, 0) scale(1.02); }
+  to { transform: translate3d(1.5%, 0.8%, 0) scale(1.075); }
 }
 
-@keyframes agentic-glow-breathe {
-  from { transform: translate3d(-3%, 1%, 0) scale(0.92); opacity: 0.65; }
-  to { transform: translate3d(4%, 5%, 0) scale(1.1); opacity: 1; }
+@keyframes agentic-snowfall {
+  from { background-position: 0 0, 45px 65px; }
+  to { background-position: -210px 500px, -130px 390px; }
+}
+
+@keyframes agentic-portrait-drift {
+  from { transform: translate3d(0, 3px, 0) scale(1); }
+  to { transform: translate3d(0, -5px, 0) scale(1.012); }
 }
 
 #zixing-agentic-research .agentic-pillars {
@@ -601,17 +616,40 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
 }
 
 #zixing-agentic-research .agentic-dialog-authors {
-  margin: 24px 0 28px;
+  margin: 8px 0 0;
   color: var(--agentic-secondary);
   font-size: 14px;
   line-height: 1.55;
 }
 
 #zixing-agentic-research .agentic-dialog-abstract {
-  margin: 0 0 34px;
+  margin: 8px 0 0;
   color: #424245;
   font-size: 17px;
   line-height: 1.58;
+}
+
+#zixing-agentic-research .agentic-dialog-section {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--agentic-line);
+}
+
+#zixing-agentic-research .agentic-dialog-section-label {
+  margin: 0;
+  color: var(--agentic-secondary);
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+#zixing-agentic-research .agentic-dialog-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 34px;
 }
 
 #zixing-agentic-research .agentic-dialog-link {
@@ -668,7 +706,7 @@ html.agentic-dialog-open { overflow: hidden; }
     padding: 62px 0 68px;
   }
   #zixing-agentic-research .agentic-hero h1 { font-size: clamp(46px, 7.5vw, 62px); }
-  #zixing-agentic-research .agentic-portrait { border-radius: 26px; }
+  #zixing-agentic-research .agentic-portrait { margin-right: -12px; }
   #zixing-agentic-research .agentic-pillar-grid { grid-template-columns: 1fr; }
   #zixing-agentic-research .agentic-pillar,
   #zixing-agentic-research .agentic-pillar + .agentic-pillar { padding: 27px 0; border-right: 0; border-bottom: 1px solid var(--agentic-line); }
@@ -687,7 +725,13 @@ html.agentic-dialog-open { overflow: hidden; }
   #zixing-agentic-research .agentic-hero h1 { font-size: 47px; line-height: 1; }
   #zixing-agentic-research .agentic-intro { font-size: 16px; }
   #zixing-agentic-research .agentic-filter-label { width: 100%; }
-  #zixing-agentic-research .agentic-portrait { width: min(100%, 330px); margin: 0 auto; border-radius: 25px; }
+  #zixing-agentic-research .agentic-hero::before {
+    background:
+      linear-gradient(180deg, rgba(3,11,20,0.86) 0%, rgba(3,11,20,0.56) 56%, rgba(3,11,20,0.4) 100%),
+      linear-gradient(90deg, rgba(3,11,20,0.78), rgba(3,11,20,0.12));
+  }
+  #zixing-agentic-research .agentic-mountain-backdrop { background-position: 61% center; }
+  #zixing-agentic-research .agentic-portrait { width: min(100%, 360px); margin: -12px auto -18px; }
   #zixing-agentic-research .agentic-pillars { padding: 68px 0 72px; }
   #zixing-agentic-research .agentic-pillar-heading { font-size: 39px; }
   #zixing-agentic-research .agentic-publications { padding: 68px 0 76px; }
