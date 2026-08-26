@@ -90,10 +90,10 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
 #zixing-agentic-research .agentic-mountain-backdrop {
   position: absolute;
   z-index: 0;
-  inset: -7%;
-  background: #07111d url("../media/snow-mountain-hero.webp") center 47% / cover no-repeat;
-  transform-origin: 62% 50%;
-  animation: agentic-mountain-drift 22s ease-in-out infinite alternate;
+  inset: 0;
+  background: #07111d url("../media/zixing-snow-hero-aigc.webp") calc(100% + 48px) 100% / auto 74% no-repeat;
+  transform-origin: 64% 48%;
+  animation: agentic-mountain-drift 28s ease-in-out infinite alternate;
   will-change: transform;
 }
 
@@ -103,6 +103,8 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   z-index: 1;
   inset: 0;
   background:
+    linear-gradient(180deg, rgba(7, 17, 29, 1) 0%, rgba(7, 17, 29, 0.96) 32%, rgba(7, 17, 29, 0) 66%),
+    linear-gradient(90deg, rgba(7, 17, 29, 0.94) 0%, rgba(7, 17, 29, 0.9) 38%, rgba(7, 17, 29, 0) 58%),
     linear-gradient(90deg, rgba(3, 11, 20, 0.91) 0%, rgba(3, 11, 20, 0.7) 42%, rgba(3, 11, 20, 0.15) 76%, rgba(3, 11, 20, 0.08) 100%),
     linear-gradient(0deg, rgba(3, 11, 20, 0.7) 0%, rgba(3, 11, 20, 0) 43%);
   pointer-events: none;
@@ -121,14 +123,14 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   position: absolute;
   z-index: 1;
   inset: -30%;
-  opacity: 0.34;
+  opacity: 0.16;
   background-image:
     radial-gradient(circle, rgba(255,255,255,0.8) 0 1px, transparent 1.5px),
     radial-gradient(circle, rgba(255,255,255,0.45) 0 0.7px, transparent 1.2px);
   background-position: 0 0, 45px 65px;
   background-size: 125px 125px, 83px 83px;
   transform: rotate(-8deg);
-  animation: agentic-snowfall 20s linear infinite;
+  animation: agentic-snowfall 30s linear infinite;
   pointer-events: none;
   will-change: background-position;
 }
@@ -137,14 +139,15 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   position: relative;
   z-index: 2;
   min-height: 680px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.7fr);
+  display: flex;
   align-items: center;
-  gap: clamp(44px, 7vw, 88px);
   padding: 68px 0 72px;
 }
 
-#zixing-agentic-research .agentic-hero-copy { min-width: 0; }
+#zixing-agentic-research .agentic-hero-copy {
+  width: min(61%, 700px);
+  min-width: 0;
+}
 
 #zixing-agentic-research .agentic-identity {
   margin: 0 0 18px;
@@ -217,54 +220,14 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   color: var(--agentic-ink);
 }
 
-#zixing-agentic-research .agentic-portrait {
-  position: relative;
-  width: 100%;
-  max-width: 450px;
-  margin: 0 -30px -72px auto;
-  aspect-ratio: 1226 / 1600;
-  overflow: visible;
-  background: transparent;
-  animation: agentic-portrait-drift 11s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-#zixing-agentic-research .agentic-portrait::after {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  height: 24%;
-  right: -14%;
-  bottom: -5%;
-  left: -14%;
-  background: radial-gradient(ellipse at 50% 78%, rgba(223,239,249,0.34), rgba(161,194,215,0.14) 44%, transparent 72%);
-  filter: blur(13px);
-  pointer-events: none;
-}
-
-#zixing-agentic-research .agentic-portrait img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 26px 34px rgba(1, 8, 16, 0.42)) saturate(0.92) contrast(1.02);
-}
-
 @keyframes agentic-mountain-drift {
-  from { transform: translate3d(-1.4%, -0.5%, 0) scale(1.02); }
-  to { transform: translate3d(1.5%, 0.8%, 0) scale(1.075); }
+  from { transform: translate3d(-0.8%, -0.25%, 0) scale(1.015); }
+  to { transform: translate3d(0.9%, 0.35%, 0) scale(1.045); }
 }
 
 @keyframes agentic-snowfall {
   from { background-position: 0 0, 45px 65px; }
   to { background-position: -210px 500px, -130px 390px; }
-}
-
-@keyframes agentic-portrait-drift {
-  from { transform: translate3d(0, 3px, 0) scale(1); }
-  to { transform: translate3d(0, -5px, 0) scale(1.012); }
 }
 
 #zixing-agentic-research .agentic-pillars {
@@ -707,12 +670,10 @@ html.agentic-dialog-open { overflow: hidden; }
   #zixing-agentic-research .agentic-hero,
   #zixing-agentic-research .agentic-hero-inner { min-height: 0; }
   #zixing-agentic-research .agentic-hero-inner {
-    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.52fr);
-    gap: 36px;
     padding: 62px 0 68px;
   }
+  #zixing-agentic-research .agentic-hero-copy { width: min(64%, 650px); }
   #zixing-agentic-research .agentic-hero h1 { font-size: clamp(46px, 7.5vw, 62px); }
-  #zixing-agentic-research .agentic-portrait { margin: 0 -16px -68px auto; }
   #zixing-agentic-research .agentic-pillar-grid { grid-template-columns: 1fr; }
   #zixing-agentic-research .agentic-pillar,
   #zixing-agentic-research .agentic-pillar + .agentic-pillar { padding: 27px 0; border-right: 0; border-bottom: 1px solid var(--agentic-line); }
@@ -727,7 +688,8 @@ html.agentic-dialog-open { overflow: hidden; }
   #zixing-agentic-research .agentic-wordmark { font-size: 15px; }
   #zixing-agentic-research .agentic-hero,
   #zixing-agentic-research .agentic-hero-inner { min-height: 0; }
-  #zixing-agentic-research .agentic-hero-inner { grid-template-columns: 1fr; gap: 38px; padding: 54px 0 46px; }
+  #zixing-agentic-research .agentic-hero-inner { min-height: 720px; align-items: flex-start; padding: 54px 0 46px; }
+  #zixing-agentic-research .agentic-hero-copy { width: 100%; }
   #zixing-agentic-research .agentic-hero h1 { font-size: 47px; line-height: 1; }
   #zixing-agentic-research .agentic-intro { font-size: 16px; }
   #zixing-agentic-research .agentic-filter-label { width: 100%; }
@@ -736,8 +698,7 @@ html.agentic-dialog-open { overflow: hidden; }
       linear-gradient(180deg, rgba(3,11,20,0.86) 0%, rgba(3,11,20,0.56) 56%, rgba(3,11,20,0.4) 100%),
       linear-gradient(90deg, rgba(3,11,20,0.78), rgba(3,11,20,0.12));
   }
-  #zixing-agentic-research .agentic-mountain-backdrop { background-position: 61% center; }
-  #zixing-agentic-research .agentic-portrait { width: min(112%, 390px); margin: -18px auto -46px; }
+  #zixing-agentic-research .agentic-mountain-backdrop { background-position: 76% 100%; background-size: auto 96%; }
   #zixing-agentic-research .agentic-pillars { padding: 68px 0 72px; }
   #zixing-agentic-research .agentic-pillar-heading { font-size: 39px; }
   #zixing-agentic-research .agentic-publications { padding: 68px 0 76px; }
