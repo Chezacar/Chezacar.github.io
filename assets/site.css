@@ -81,7 +81,8 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
 
 #zixing-agentic-research .agentic-hero {
   position: relative;
-  min-height: 680px;
+  min-height: max(680px, calc(100vh - 58px));
+  min-height: max(680px, calc(100svh - 58px));
   overflow: hidden;
   background: #07111d;
   color: var(--agentic-white);
@@ -91,10 +92,15 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   position: absolute;
   z-index: 0;
   inset: 0;
-  background: #07111d url("../media/zixing-snow-hero-aigc.webp") calc(100% + 48px) 100% / auto 74% no-repeat;
-  transform-origin: 64% 48%;
-  animation: agentic-mountain-drift 28s ease-in-out infinite alternate;
-  will-change: transform;
+  background: #07111d url("../media/snow-mountain-hero-poster.webp") center / cover no-repeat;
+}
+
+#zixing-agentic-research .agentic-mountain-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 #zixing-agentic-research .agentic-hero::before {
@@ -103,10 +109,9 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   z-index: 1;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(7, 17, 29, 1) 0%, rgba(7, 17, 29, 0.96) 32%, rgba(7, 17, 29, 0) 66%),
-    linear-gradient(90deg, rgba(7, 17, 29, 0.94) 0%, rgba(7, 17, 29, 0.9) 38%, rgba(7, 17, 29, 0) 58%),
-    linear-gradient(90deg, rgba(3, 11, 20, 0.91) 0%, rgba(3, 11, 20, 0.7) 42%, rgba(3, 11, 20, 0.15) 76%, rgba(3, 11, 20, 0.08) 100%),
-    linear-gradient(0deg, rgba(3, 11, 20, 0.7) 0%, rgba(3, 11, 20, 0) 43%);
+    linear-gradient(180deg, rgba(7, 17, 29, 0.38) 0%, rgba(7, 17, 29, 0.08) 46%, rgba(7, 17, 29, 0) 68%),
+    linear-gradient(90deg, rgba(3, 11, 20, 0.68) 0%, rgba(3, 11, 20, 0.45) 42%, rgba(3, 11, 20, 0.1) 72%, rgba(3, 11, 20, 0.03) 100%),
+    linear-gradient(0deg, rgba(3, 11, 20, 0.28) 0%, rgba(3, 11, 20, 0) 43%);
   pointer-events: none;
 }
 
@@ -119,33 +124,21 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   pointer-events: none;
 }
 
-#zixing-agentic-research .agentic-snow-drift {
-  position: absolute;
-  z-index: 1;
-  inset: -30%;
-  opacity: 0.16;
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.8) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(255,255,255,0.45) 0 0.7px, transparent 1.2px);
-  background-position: 0 0, 45px 65px;
-  background-size: 125px 125px, 83px 83px;
-  transform: rotate(-8deg);
-  animation: agentic-snowfall 30s linear infinite;
-  pointer-events: none;
-  will-change: background-position;
-}
-
 #zixing-agentic-research .agentic-hero-inner {
   position: relative;
   z-index: 2;
-  min-height: 680px;
-  display: flex;
+  min-height: max(680px, calc(100vh - 58px));
+  min-height: max(680px, calc(100svh - 58px));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(260px, 25vw, 330px);
   align-items: center;
+  gap: clamp(46px, 7vw, 100px);
   padding: 68px 0 72px;
 }
 
 #zixing-agentic-research .agentic-hero-copy {
-  width: min(61%, 700px);
+  width: 100%;
+  max-width: 700px;
   min-width: 0;
 }
 
@@ -220,14 +213,33 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   color: var(--agentic-ink);
 }
 
-@keyframes agentic-mountain-drift {
-  from { transform: translate3d(-0.8%, -0.25%, 0) scale(1.015); }
-  to { transform: translate3d(0.9%, 0.35%, 0) scale(1.045); }
+#zixing-agentic-research .agentic-portrait {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+  overflow: hidden;
+  border: 6px solid rgba(255, 255, 255, 0.72);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 24px 55px rgba(1, 8, 16, 0.36),
+    0 0 0 1px rgba(255, 255, 255, 0.16);
 }
 
-@keyframes agentic-snowfall {
-  from { background-position: 0 0, 45px 65px; }
-  to { background-position: -210px 500px, -130px 390px; }
+#zixing-agentic-research .agentic-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 32%;
+  filter: saturate(0.9) contrast(1.02);
+}
+
+@media (min-aspect-ratio: 7/5) {
+  #zixing-agentic-research .agentic-mountain-backdrop {
+    background-image: url("../media/snow-mountain-hero-poster-wide.webp");
+  }
 }
 
 #zixing-agentic-research .agentic-pillars {
@@ -670,9 +682,11 @@ html.agentic-dialog-open { overflow: hidden; }
   #zixing-agentic-research .agentic-hero,
   #zixing-agentic-research .agentic-hero-inner { min-height: 0; }
   #zixing-agentic-research .agentic-hero-inner {
+    grid-template-columns: minmax(0, 1fr) 210px;
+    gap: 28px;
     padding: 62px 0 68px;
   }
-  #zixing-agentic-research .agentic-hero-copy { width: min(64%, 650px); }
+  #zixing-agentic-research .agentic-hero-copy { width: 100%; }
   #zixing-agentic-research .agentic-hero h1 { font-size: clamp(46px, 7.5vw, 62px); }
   #zixing-agentic-research .agentic-pillar-grid { grid-template-columns: 1fr; }
   #zixing-agentic-research .agentic-pillar,
@@ -688,17 +702,26 @@ html.agentic-dialog-open { overflow: hidden; }
   #zixing-agentic-research .agentic-wordmark { font-size: 15px; }
   #zixing-agentic-research .agentic-hero,
   #zixing-agentic-research .agentic-hero-inner { min-height: 0; }
-  #zixing-agentic-research .agentic-hero-inner { min-height: 720px; align-items: flex-start; padding: 54px 0 46px; }
+  #zixing-agentic-research .agentic-hero-inner {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 34px;
+    padding: 54px 0 42px;
+  }
   #zixing-agentic-research .agentic-hero-copy { width: 100%; }
   #zixing-agentic-research .agentic-hero h1 { font-size: 47px; line-height: 1; }
   #zixing-agentic-research .agentic-intro { font-size: 16px; }
   #zixing-agentic-research .agentic-filter-label { width: 100%; }
   #zixing-agentic-research .agentic-hero::before {
     background:
-      linear-gradient(180deg, rgba(3,11,20,0.86) 0%, rgba(3,11,20,0.56) 56%, rgba(3,11,20,0.4) 100%),
-      linear-gradient(90deg, rgba(3,11,20,0.78), rgba(3,11,20,0.12));
+      linear-gradient(180deg, rgba(3,11,20,0.72) 0%, rgba(3,11,20,0.38) 56%, rgba(3,11,20,0.24) 100%),
+      linear-gradient(90deg, rgba(3,11,20,0.66), rgba(3,11,20,0.08));
   }
-  #zixing-agentic-research .agentic-mountain-backdrop { background-position: 76% 100%; background-size: auto 96%; }
+  #zixing-agentic-research .agentic-mountain-backdrop {
+    background-position: center;
+  }
+  #zixing-agentic-research .agentic-portrait { width: min(54vw, 200px); justify-self: end; border-width: 4px; }
   #zixing-agentic-research .agentic-pillars { padding: 68px 0 72px; }
   #zixing-agentic-research .agentic-pillar-heading { font-size: 39px; }
   #zixing-agentic-research .agentic-publications { padding: 68px 0 76px; }
@@ -720,6 +743,7 @@ html.agentic-dialog-open { overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  #zixing-agentic-research .agentic-mountain-video { display: none; }
   #zixing-agentic-research *,
   #zixing-agentic-research *::before,
   #zixing-agentic-research *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }

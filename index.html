@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://chezacar.github.io/">
   <link rel="icon" type="image/png" href="media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_32x32_fill_lanczos_center_3.png">
   <link rel="apple-touch-icon" href="media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_180x180_fill_lanczos_center_3.png">
-  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/site.css?v=20260831l">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Zixing Lei | Agentic AI Research">
   <meta property="og:description" content="Research in recursive self-improvement, reinforcement learning, and embodied AI.">
@@ -62,13 +62,17 @@
 
   <main id="agentic-top">
     <section class="agentic-hero" aria-labelledby="agentic-hero-title">
-      <div class="agentic-mountain-backdrop" aria-hidden="true"></div>
-      <div class="agentic-snow-drift" aria-hidden="true"></div>
+      <div class="agentic-mountain-backdrop" aria-hidden="true">
+        <video class="agentic-mountain-video" autoplay muted loop playsinline preload="metadata">
+          <source src="media/snow-mountain-hero-motion-wide.mp4" type="video/mp4" media="(min-aspect-ratio: 7/5)">
+          <source src="media/snow-mountain-hero-motion.mp4?v=20260831m" type="video/mp4">
+        </video>
+      </div>
       <div class="agentic-width agentic-hero-inner">
         <div class="agentic-hero-copy">
           <p class="agentic-identity">Zixing &ldquo;Elwood&rdquo; Lei &middot; PhD Student, Shanghai Jiao Tong University &middot; <a class="agentic-identity-link" href="https://scholar.google.com/citations?user=4r3VI9EAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">Google Scholar &#8599;</a></p>
           <h1 id="agentic-hero-title">Agents that improve, explore, and act.</h1>
-          <p class="agentic-intro">Supervised by Prof. <strong>Siheng Chen</strong>, I focus on <strong>Recursive Self-Improvement, Reinforcement Learning, and Embodied AI</strong>. I believe that using powerful agents to reshape today&rsquo;s scientific and engineering R&amp;D pipelines is a critical path toward a superintelligent future.</p>
+          <p class="agentic-intro">Supervised by Prof. Siheng Chen, I focus on Recursive Self-Improvement, Reinforcement Learning, and Embodied AI. I believe that using powerful agents to reshape today&rsquo;s scientific and engineering R&amp;D pipelines is a critical path toward a superintelligent future.</p>
           <div class="agentic-filter-bar" aria-label="Filter publications by research direction">
             <span class="agentic-filter-label">Explore by direction</span>
             <button class="agentic-filter" type="button" data-agentic-filter="all" aria-pressed="true">All work</button>
@@ -77,6 +81,9 @@
             <button class="agentic-filter" type="button" data-agentic-filter="Embodied AI" aria-pressed="false">Embodied AI</button>
           </div>
         </div>
+        <figure class="agentic-portrait">
+          <img src="media/zixing-portrait.webp" width="920" height="1200" alt="Zixing Lei at a snow resort" fetchpriority="high">
+        </figure>
       </div>
     </section>
 
