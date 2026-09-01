@@ -334,6 +334,7 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   display: flex;
   align-items: center;
   gap: 15px;
+  min-height: 87px;
   padding: 15px 0;
   border-bottom: 1px solid var(--agentic-line);
 }
@@ -388,6 +389,13 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   display: block;
   color: #86868b;
   font-size: 10.5px;
+}
+
+@media (max-width: 980px) {
+  #zixing-agentic-research .agentic-exp-groups {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
 }
 
 #zixing-agentic-research .agentic-publications {
@@ -804,7 +812,6 @@ html.agentic-dialog-open { overflow: hidden; }
   #zixing-agentic-research .agentic-pillar + .agentic-pillar { padding: 27px 0; border-right: 0; border-bottom: 1px solid var(--agentic-line); }
   #zixing-agentic-research .agentic-pillar:last-child { border-bottom: 0; }
   #zixing-agentic-research .agentic-experience { padding: 76px 0; }
-  #zixing-agentic-research .agentic-exp-groups { grid-template-columns: 1fr; gap: 42px; }
   #zixing-agentic-research .agentic-paper-grid { grid-template-columns: 1fr; }
   #zixing-agentic-research .agentic-paper { min-height: 350px; }
   #zixing-agentic-research.agentic-modal-ready .agentic-paper { min-height: 225px; }
