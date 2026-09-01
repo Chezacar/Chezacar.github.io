@@ -766,6 +766,14 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
 
 #zixing-agentic-research .agentic-dialog-link:hover { background: #0077ed; }
 
+#zixing-agentic-research .agentic-dialog-link[hidden] { display: none; }
+
+#zixing-agentic-research .agentic-dialog-link-qwen {
+  background: var(--agentic-ink);
+}
+
+#zixing-agentic-research .agentic-dialog-link-qwen:hover { background: #333336; }
+
 html.agentic-dialog-open { overflow: hidden; }
 
 @keyframes agentic-dialog-in {

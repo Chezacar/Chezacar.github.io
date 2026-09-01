@@ -20,6 +20,8 @@
   const dialogAbstract = root.querySelector('[data-agentic-dialog-abstract]');
   const dialogLink = root.querySelector('[data-agentic-dialog-link]');
   const dialogLinkLabel = root.querySelector('[data-agentic-dialog-link-label]');
+  const dialogRelatedLink = root.querySelector('[data-agentic-dialog-related-link]');
+  const dialogRelatedLabel = root.querySelector('[data-agentic-dialog-related-label]');
   let lastDialogTrigger = null;
 
   const publicationLabel = (value) => `${value} publication${value === 1 ? '' : 's'}`;
@@ -68,6 +70,19 @@
         const isArxiv = new URL(link.href).hostname.endsWith('arxiv.org');
         dialogLinkLabel.textContent = isArxiv ? 'arXiv' : 'Paper';
         dialogLink.setAttribute('aria-label', `${isArxiv ? 'Open on arXiv' : 'Open paper'}: ${title}`);
+        const relatedUrl = paper.dataset.agenticRelatedUrl;
+        const relatedLabel = paper.dataset.agenticRelatedLabel || 'Related link';
+        if (dialogRelatedLink && dialogRelatedLabel) {
+          dialogRelatedLink.hidden = !relatedUrl;
+          dialogRelatedLabel.textContent = relatedLabel;
+          if (relatedUrl) {
+            dialogRelatedLink.href = relatedUrl;
+            dialogRelatedLink.setAttribute('aria-label', `Open ${relatedLabel}: ${title}`);
+          } else {
+            dialogRelatedLink.removeAttribute('href');
+            dialogRelatedLink.removeAttribute('aria-label');
+          }
+        }
         document.documentElement.classList.add('agentic-dialog-open');
         paperDialog.showModal();
       });
