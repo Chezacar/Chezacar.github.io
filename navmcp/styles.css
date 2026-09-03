@@ -232,15 +232,27 @@ footer > div { display: flex; gap: 24px; }
   .hero-meta { gap: 24px; }
   .hero-media video { aspect-ratio: 16 / 9; }
   .hero-facts { grid-template-columns: repeat(2, 1fr); }
+  .hero-facts div:nth-child(odd) { padding-left: 0; }
+  .hero-facts div:nth-child(even) { padding-right: 0; border-right: 0; }
+  .hero-facts div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .method-layout, .comparison-grid, .citation-section, .experiment-heading { grid-template-columns: 1fr; }
   .experiment-number { grid-column: auto; }
   .protocol-story { grid-template-columns: repeat(2, 1fr); }
-  .protocol-story article:nth-child(2) { border-right: 0; }
+  .protocol-story article:nth-child(odd) { padding-left: 0; }
+  .protocol-story article:nth-child(even) { padding-right: 0; border-right: 0; }
   .protocol-story article:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .video-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .method-tabs { display: grid; grid-template-columns: repeat(3, 1fr); }
   .method-tab { grid-template-columns: 1fr; }
   .method-tab span { grid-row: auto; }
+}
+
+@media (max-width: 900px) {
+  .horizon-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .horizon-stats > div:nth-child(odd) { padding-left: 0; }
+  .horizon-stats > div:nth-child(even) { padding-right: 0; border-right: 0; }
+  .horizon-stats > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .horizon-stats span { white-space: nowrap; }
 }
 
 @media (max-width: 720px) {
@@ -250,9 +262,10 @@ footer > div { display: flex; gap: 24px; }
   h1 { font-size: clamp(42px, 13vw, 62px); }
   .resource-links { grid-template-columns: 1fr; }
   .hero-overview { margin-top: 42px; padding: 24px 0 28px; }
-  .hero-facts, .result-cards, .horizon-stats { grid-template-columns: 1fr 1fr; }
-  .hero-facts div, .result-cards article, .horizon-stats > div { border-bottom: 1px solid var(--white-line); }
-  .result-cards article, .result-cards article:first-child, .horizon-stats > div, .horizon-stats > div:first-child { padding-left: 14px; }
+  .hero-facts, .result-cards { grid-template-columns: 1fr 1fr; }
+  .result-cards article { border-bottom: 1px solid var(--white-line); }
+  .result-cards article, .result-cards article:first-child { padding-left: 14px; }
+  .horizon-stats strong { font-size: 40px; }
   .premise-grid { grid-template-columns: 1fr; gap: 45px; }
   .method-tabs { grid-template-columns: 1fr; }
   .method-panels { padding: 30px 22px; }
