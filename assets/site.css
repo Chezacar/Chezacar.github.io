@@ -643,6 +643,11 @@ body { margin: 0; overflow-x: hidden; background: #ffffff; }
   font-size: 14px;
 }
 
+#zixing-agentic-research .agentic-project-link {
+  margin-top: 8px;
+  color: var(--agentic-embodied);
+}
+
 #zixing-agentic-research .agentic-paper-link:hover,
 #zixing-agentic-research .agentic-scholar:hover { text-decoration: underline; }
 

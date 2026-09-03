@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NavMCP — scaffolding complementary vision-language and navigation foundation models into long-horizon physical-world agents.">
+  <meta name="theme-color" content="#40394c">
+  <title>NavMCP — Scaffolding Foundation Models into Physical-World Agents</title>
+  <link rel="stylesheet" href="styles.css?v=20260903c">
+  <link rel="icon" type="image/png" href="../media/icon_hue517f050d4cd76a656bcd0cdbfd29506_4134_32x32_fill_lanczos_center_3.png">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="../" aria-label="Back to Zixing Lei Research">
+      <span>NavMCP</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#idea">Idea</a>
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#real-world">Real world</a>
+      <a href="#citation">Citation</a>
+    </nav>
+    <a class="header-cta" href="https://arxiv.org/abs/2608.30396" target="_blank" rel="noopener noreferrer">Paper <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero section-dark">
+      <div class="hero-top">
+        <div class="hero-copy reveal">
+          <h1>Scaffolding Foundation Models into Physical-World Agents Pushes the Frontier of Long-Horizon Navigation</h1>
+        </div>
+
+        <div class="hero-media reveal reveal-delay">
+          <video autoplay muted loop controls playsinline preload="metadata" poster="assets/figures/navmcp-technical-overview-thumb.jpg?v=20260903b">
+            <source src="assets/videos/navmcp-technical-overview.mp4?v=20260903e" type="video/mp4">
+          </video>
+          <p class="hero-subtitle">Technical overview: NavMCP connects vision-language reasoning, grounded navigation, journey evidence, and persistent memory.</p>
+          <div class="resource-links" aria-label="Project resources">
+            <a class="button button-light" href="https://arxiv.org/abs/2608.30396" target="_blank" rel="noopener noreferrer">Read paper <span>↗</span></a>
+            <a class="button button-ghost" href="#method">Explore method <span>↓</span></a>
+            <a class="text-link" href="#real-world">Watch demos <span>↓</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-meta reveal">
+        <div class="authors" aria-label="Authors">
+          <p class="author-list">
+            <span>Zixing Lei<sup>1,3,*</sup></span>
+            <span>Gengze Zhou<sup>4,*</sup></span>
+            <span>Xiong-Hui Chen<sup>2,*</sup></span>
+            <span>Jiazhao Zhang<sup>5</sup></span>
+            <span>Yiyang Huang<sup>2</sup></span>
+            <span>Hang Yin<sup>6</sup></span>
+            <span>Haoqi Yuan<sup>5</sup></span>
+            <span>Qi Wu<sup>4</sup></span>
+            <span>Weixin Li<sup>3</sup></span>
+            <span>Siheng Chen<sup>1</sup></span>
+          </p>
+          <p class="affiliation-list">
+            <span><sup>1</sup>Shanghai Jiao Tong University</span>
+            <span><sup>2</sup>Qwen Team, Alibaba Inc.</span>
+            <span><sup>3</sup>Zhongguancun Academy</span>
+            <span><sup>4</sup>AIML, Adelaide University</span>
+            <span><sup>5</sup>Peking University</span>
+            <span><sup>6</sup>Tsinghua University</span>
+          </p>
+          <small><sup>*</sup>Equally contributed.</small>
+        </div>
+
+        <div class="hero-affiliations" aria-label="Affiliations">
+          <div title="Shanghai Jiao Tong University"><img src="assets/logos/sjtu.png" alt="Shanghai Jiao Tong University"></div>
+          <div title="Qwen Team, Alibaba Inc."><img src="assets/logos/qwen.png" alt="Qwen Team, Alibaba Inc."></div>
+          <div title="Zhongguancun Academy"><img src="assets/logos/zgca.png" alt="Zhongguancun Academy"></div>
+          <div title="Adelaide University"><img src="assets/logos/adelaide.png" alt="Adelaide University"></div>
+          <div title="Peking University"><img src="assets/logos/pku.png" alt="Peking University"></div>
+          <div title="Tsinghua University"><img src="assets/logos/tsinghua.png" alt="Tsinghua University"></div>
+        </div>
+      </div>
+
+      <div class="hero-facts" aria-label="Headline results">
+        <div><strong>76.7%</strong><span>HM-EQA accuracy</span></div>
+        <div><strong>79.27</strong><span>EXPRESS LLM Score</span></div>
+        <div><strong>78.3%</strong><span>Real-robot success</span></div>
+        <div><strong>3</strong><span>Protocol channels</span></div>
+      </div>
+    </section>
+
+    <section class="section section-ivory" id="idea">
+      <div class="section-heading reveal">
+        <p class="section-index">01 · The premise</p>
+        <h2>Two complementary models.<br><span>One long-horizon agent.</span></h2>
+      </div>
+      <div class="premise-grid">
+        <blockquote class="reveal">“The central challenge is not simply to build a stronger reasoner or navigator, but to organize their <em>complementary capabilities</em> into persistent physical-world agency.”</blockquote>
+        <div class="problem-copy reveal">
+          <p>VLMs can infer missing information and adapt high-level plans, but grounding every decision into navigation is brittle. NFMs execute semantic goals robustly, yet typically operate as bounded episodes without persistent task-level reasoning.</p>
+          <p>NavMCP closes this <strong>episodic interface gap</strong> with an evidence-centric scaffold that turns isolated navigation rollouts into persistent embodied interaction—without retraining either foundation model.</p>
+        </div>
+      </div>
+
+      <figure class="paper-figure wide-figure reveal">
+        <img src="assets/figures/teaser.png" alt="NavMCP overview comparing episodic and evidence-centric navigation interfaces">
+        <figcaption><span>Figure 1</span> A VLM reasons about missing evidence while the NFM executes semantic navigation goals over long horizons.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section section-mint" id="method">
+      <div class="section-heading compact reveal">
+        <p class="section-index">02 · The scaffold</p>
+        <h2>Three channels.<br><span>One persistent interaction loop.</span></h2>
+        <p>Each channel resolves one failure mode at the agent–executor boundary.</p>
+      </div>
+
+      <div class="method-layout">
+        <div class="method-tabs reveal" role="tablist" aria-label="NavMCP scaffold channels">
+          <button class="method-tab active" role="tab" aria-selected="true" aria-controls="panel-intent" data-tab="intent">
+            <span>01</span><b>Intent</b><small>Specify what to seek</small>
+          </button>
+          <button class="method-tab" role="tab" aria-selected="false" aria-controls="panel-observation" data-tab="observation">
+            <span>02</span><b>Observation</b><small>Preserve what appears</small>
+          </button>
+          <button class="method-tab" role="tab" aria-selected="false" aria-controls="panel-memory" data-tab="memory">
+            <span>03</span><b>Memory</b><small>Carry evidence forward</small>
+          </button>
+        </div>
+
+        <div class="method-panels reveal">
+          <article class="method-panel active" id="panel-intent" role="tabpanel" data-panel="intent">
+            <div class="panel-number">01</div>
+            <p class="panel-kicker">From evidence needs to navigation calls</p>
+            <h3>Express intent—not low-level controls.</h3>
+            <p>The agent converts a missing-evidence hypothesis into a semantic call with a mode, natural-language sub-goal, budget, and constraints. The NFM remains responsible for the route.</p>
+            <div class="code-card"><span>navigate_to_object</span><code>target: “small black sofa”</code><code>budget: 120 steps</code></div>
+          </article>
+          <article class="method-panel" id="panel-observation" role="tabpanel" data-panel="observation" hidden>
+            <div class="panel-number">02</div>
+            <p class="panel-kicker">From trajectories to grounded evidence</p>
+            <h3>Keep the journey, not only the endpoint.</h3>
+            <p>Keyframes across the complete rollout become a source-grounded journey artifact: observed rooms and objects, route context, uncertainty, and cues for the next search.</p>
+            <div class="code-card"><span>journey_artifact</span><code>evidence: frame_18 → hallway sofa</code><code>uncertainty: medium</code></div>
+          </article>
+          <article class="method-panel" id="panel-memory" role="tabpanel" data-panel="memory" hidden>
+            <div class="panel-number">03</div>
+            <p class="panel-kicker">From tool returns to task state</p>
+            <h3>Accumulate findings across calls.</h3>
+            <p>Positive evidence, negative evidence, checked regions, unresolved goals, and answer support persist in the next-turn context—preventing repeated searches and premature answers.</p>
+            <div class="code-card"><span>eqa_context</span><code>checked: kitchen, lounge</code><code>next: search bedroom corners</code></div>
+          </article>
+        </div>
+      </div>
+
+      <figure class="paper-figure system-figure reveal">
+        <img src="assets/figures/system.png" alt="End-to-end NavMCP system architecture">
+        <figcaption><span>System overview</span> The NFM extends the VLM’s action horizon, while the VLM agent extends the NFM’s reasoning horizon.</figcaption>
+      </figure>
+
+      <div class="protocol-story reveal" aria-label="NavMCP protocol in four steps">
+        <article><span>01</span><h3>Ask what evidence is missing.</h3><p>The VLM turns the question and current view into an explicit evidence need.</p></article>
+        <article><span>02</span><h3>Navigate with semantic intent.</h3><p>NavMCP delegates a grounded sub-goal while the NFM handles local execution.</p></article>
+        <article><span>03</span><h3>Keep the journey as evidence.</h3><p>Trajectory keyframes preserve what was seen, where it appeared, and what remains uncertain.</p></article>
+        <article><span>04</span><h3>Update memory, then answer.</h3><p>Accumulated positive and negative evidence supports the next search or a grounded final response.</p></article>
+      </div>
+    </section>
+
+    <section class="section section-dark results" id="results">
+      <div class="section-heading reveal">
+        <p class="section-index">03 · Evidence across benchmarks</p>
+        <h2>State of the art across<br><span>three EQA regimes.</span></h2>
+        <p>Results cover single-question search, multi-target reasoning, and free-form embodied QA.</p>
+      </div>
+
+      <div class="result-cards reveal">
+        <article><span>HM-EQA</span><strong>76.7<small>%</small></strong><p>+7.5 points over FAST-EQA</p></article>
+        <article><span>MT-HM3D</span><strong>54.4<small>%</small></strong><p>+3.9 points over FAST-EQA</p></article>
+        <article><span>EXPRESS-Bench</span><strong>79.27</strong><p>+10.57 LLM Score</p></article>
+        <article><span>Path efficiency</span><strong>33.96</strong><p>+4.71 E<sub>path</sub></p></article>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="chart-card reveal">
+          <div class="chart-heading"><div><p>Matched HM-EQA comparison</p><h3>Same agent. Same budget. Better interface.</h3></div><span>Accuracy (%)</span></div>
+          <div class="bar-row"><span>Explore-EQA</span><div><i style="--value:57.6%"></i></div><b>57.6</b></div>
+          <div class="bar-row"><span>ToolEQA</span><div><i style="--value:60.8%"></i></div><b>60.8</b></div>
+          <div class="bar-row"><span>FAST-EQA</span><div><i style="--value:63.5%"></i></div><b>63.5</b></div>
+          <div class="bar-row ours"><span>NavMCP</span><div><i style="--value:74%"></i></div><b>74.0</b></div>
+          <small>Qwen3.5-397B-A17B agent; matched episodes, initial states, and budget.</small>
+        </div>
+
+        <div class="gap-card reveal">
+          <p>Episodic interface gap</p>
+          <h3>What gets lost when the journey disappears?</h3>
+          <div class="gap-numbers"><strong>74.0%</strong><span>full scaffold</span><i>−14.9 pp</i><strong>59.1%</strong><span>episodic return</span></div>
+          <ul>
+            <li><span>Intent</span> one navigation mode <b>−2.0</b></li>
+            <li><span>Observation</span> terminal-only view <b>−5.9</b></li>
+            <li><span>Memory</span> no EQA context state <b>−4.6</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <figure class="paper-figure dark-figure reveal">
+        <img src="assets/figures/evidence-search.png" alt="Evidence-guided search episode showing room exploration, goal distance, and tool-call timeline">
+        <figcaption><span>Evidence-guided search</span> The route is deliberately non-monotonic: the agent rules out five rooms before an object-targeted final call.</figcaption>
+      </figure>
+
+      <div class="experiment-chapter eqa-chapter reveal">
+        <div class="experiment-heading">
+          <p class="experiment-number">Experiment 01 · Embodied question answering</p>
+          <h3>Watch evidence seeking unfold.</h3>
+          <p>The agent moves beyond the initial view, selects semantic navigation goals, and gathers the visual evidence needed to answer.</p>
+        </div>
+
+        <div class="video-gallery">
+          <div class="video-stage">
+            <video id="demo-video" controls playsinline preload="metadata" poster="assets/figures/sim-demo-2-thumb.jpg">
+              <source src="assets/videos/sim-demo-2.mp4" type="video/mp4">
+            </video>
+            <div class="video-title"><span id="demo-index">01 / 08</span><b id="demo-title">Compare rugs across rooms</b></div>
+          </div>
+          <div class="video-list" role="list" aria-label="Select an embodied question answering demonstration">
+            <button class="video-option active" data-video="assets/videos/sim-demo-2.mp4" data-poster="assets/figures/sim-demo-2-thumb.jpg" data-title="Compare rugs across rooms" data-index="01 / 08">
+              <img src="assets/figures/sim-demo-2-thumb.jpg" alt="Preview of a cross-room rug comparison task"><span><small>Cross-room comparison</small>Compare two rugs</span>
+            </button>
+            <button class="video-option" data-video="assets/videos/sim-demo-5.mp4" data-poster="assets/figures/sim-demo-5-thumb.jpg" data-title="Verify the lamp state" data-index="02 / 08">
+              <img src="assets/figures/sim-demo-5-thumb.jpg" alt="Preview of a lamp state verification task"><span><small>State verification</small>Check the lamp</span>
+            </button>
+            <button class="video-option" data-video="assets/videos/sim-demo-7.mp4" data-poster="assets/figures/sim-demo-7-thumb.jpg" data-title="Simulation rollout 03" data-index="03 / 08">
+              <img src="assets/figures/sim-demo-7-thumb.jpg" alt="Preview of simulation rollout 03"><span><small>Simulation 03</small>Rollout 03</span>
+            </button>
+            <button class="video-option" data-video="assets/videos/sim-demo-10.mp4" data-poster="assets/figures/sim-demo-10-thumb.jpg" data-title="Simulation rollout 04" data-index="04 / 08">
+              <img src="assets/figures/sim-demo-10-thumb.jpg" alt="Preview of simulation rollout 04"><span><small>Simulation 04</small>Rollout 04</span>
+            </button>
+            <button class="video-option" data-video="assets/videos/sim-demo-162.mp4" data-poster="assets/figures/sim-demo-162-thumb.jpg" data-title="Simulation rollout 05" data-index="05 / 08">
+              <img src="assets/figures/sim-demo-162-thumb.jpg" alt="Preview of simulation rollout 05"><span><small>Simulation 05</small>Rollout 05</span>
+            </button>
+            <button class="video-option" data-video="assets/videos/sim-demo-214.mp4" data-poster="assets/figures/sim-demo-214-thumb.jpg" data-title="Simulation rollout 06" data-index="06 / 08">
+              <img src="assets/figures/sim-demo-214-thumb.jpg" alt="Preview of simulation rollout 06"><span><small>Simulation 06</small>Rollout 06</span>
+            </button>
+            <button class="video-option" data-video="assets/videos/sim-demo-283.mp4" data-poster="assets/figures/sim-demo-283-thumb.jpg" data-title="Simulation rollout 07" data-index="07 / 08">
+              <img src="assets/figures/sim-demo-283-thumb.jpg" alt="Preview of simulation rollout 07"><span><small>Simulation 07</small>Rollout 07</span>
+            </button>
+            <button class="video-option" data-video="assets/videos/sim-demo-347.mp4" data-poster="assets/figures/sim-demo-347-thumb.jpg" data-title="Simulation rollout 08" data-index="08 / 08">
+              <img src="assets/figures/sim-demo-347-thumb.jpg" alt="Preview of simulation rollout 08"><span><small>Simulation 08</small>Rollout 08</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-ivory" id="real-world">
+      <div class="section-heading compact reveal">
+        <p class="section-index">04 · Beyond benchmark episodes</p>
+        <h2>From long-horizon navigation to<br><span>physical-world agency.</span></h2>
+        <p>The same evidence-centric interface scales from controlled EQA to extended real-world execution and open-ended assistant scenarios.</p>
+      </div>
+
+      <div class="experiment-chapter physical-chapter reveal">
+        <div class="experiment-heading">
+          <p class="experiment-number">Experiment 02 · Long-horizon deployment</p>
+          <h3>Stay coherent across spaces, detours, and delayed evidence.</h3>
+          <p>A Unitree Go2 follows a long semantic route toward a coffee shop using a lightweight map while the agent monitors progress and revises its search.</p>
+        </div>
+
+        <div class="horizon-stats">
+          <div><span>Low · single room</span><strong>90%</strong><small>+10 pp</small></div>
+          <div><span>Medium · cross room</span><strong>85%</strong><small>+25 pp</small></div>
+          <div><span>High · over 20 m</span><strong>60%</strong><small>+45 pp</small></div>
+          <div class="total"><span>Overall</span><strong>78.3%</strong><small>60 episodes</small></div>
+        </div>
+
+        <figure class="case-video long-horizon-video">
+          <div class="case-label"><span>Extended real-world navigation · 3× speed</span><span>03:32</span></div>
+          <video controls playsinline preload="metadata" poster="assets/figures/long-horizon-case-thumb.jpg">
+            <source src="assets/videos/long-horizon-case.mp4" type="video/mp4">
+          </video>
+          <figcaption><strong>Long-horizon case.</strong> The robot traverses multiple public spaces, preserves progress across navigation calls, and grounds arrival at the target location.</figcaption>
+        </figure>
+      </div>
+
+      <div class="experiment-chapter future-chapter reveal">
+        <div class="experiment-heading">
+          <p class="experiment-number">Experiment 03 · Future-facing scenarios</p>
+          <h3>Navigation becomes one capability inside a physical-world agent.</h3>
+          <p>Beyond a benchmark question, users can delegate open-ended goals while the agent coordinates reasoning, evidence seeking, movement, and a grounded response.</p>
+        </div>
+
+        <figure class="future-video">
+          <video controls playsinline preload="metadata" poster="assets/figures/featured-robot-thumb.jpg">
+            <source src="assets/videos/featured-robot-from-20s.mp4" type="video/mp4">
+          </video>
+          <figcaption><span>Scenario reel · 2× speed · 02:02</span> Real-world demonstrations connect natural-language requests to persistent robot execution.</figcaption>
+        </figure>
+
+        <div class="future-points" aria-label="Future-facing capabilities">
+          <article><span>01</span><h4>Delegate naturally</h4><p>Express a goal in language rather than specifying waypoints or control sequences.</p></article>
+          <article><span>02</span><h4>Act in open spaces</h4><p>Combine global reasoning with a navigation foundation model that handles local motion.</p></article>
+          <article><span>03</span><h4>Return grounded help</h4><p>Preserve journey evidence so the final response reflects what the robot actually observed.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark citation-section" id="citation">
+      <div class="citation-copy reveal">
+        <p class="section-index">05 · Read & cite</p>
+        <h2>Read and cite<br><span>NavMCP.</span></h2>
+        <p>Read the full paper for the agentic scaffolding framework, evaluation protocols, controlled ablations, and additional qualitative cases.</p>
+        <a class="button button-light" href="https://arxiv.org/abs/2608.30396" target="_blank" rel="noopener noreferrer">Open paper <span>↗</span></a>
+      </div>
+      <div class="bibtex reveal">
+        <div><span>BibTeX</span><button id="copy-citation" type="button">Copy citation</button></div>
+        <pre><code id="citation-code">@article{lei2026scaffolding,
+  title   = {Scaffolding Foundation Models into Physical-World
+             Agents Pushes the Frontier of Long-Horizon Navigation},
+  author  = {Lei, Zixing and Zhou, Gengze and Chen, Xiong-Hui
+             and Zhang, Jiazhao and Huang, Yiyang and Yin, Hang
+             and Yuan, Haoqi and Wu, Qi and Li, Weixin
+             and Chen, Siheng},
+  year    = {2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#top"><span>NavMCP</span></a>
+    <p>An agentic scaffold for long-horizon physical-world exploration.</p>
+    <div><a href="#method">Method</a><a href="#results">Results</a><a href="https://arxiv.org/abs/2608.30396" target="_blank" rel="noopener noreferrer">Paper</a></div>
+  </footer>
+
+  <script src="script.js?v=20260903a"></script>
+</body>
+</html>
